@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+<?php
+include('login.php');
+if(isset($_SESSION['signed_id'])){ //hay que cambiar el nombre de la variable
+header("location: pag_inicio.html");
+}
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <title>pagInicio_sesion</title>
@@ -55,15 +61,16 @@
       </div>
 
       <!-- tf_usuario (Text Field) -->
+      <form method="post" action="">
       <div id="u1" class="ax_text_field" data-label="tf_usuario">
-        <input id="u1_input" type="text" value=""/>
+        <input id="u1_input" name="campo_nombre" type="text" value=""/>
       </div>
 
       <!-- tf_contrasena (Text Field) -->
       <div id="u2" class="ax_text_field" data-label="tf_contrasena">
-        <input id="u2_input" type="password" value=""/>
+        <input id="u2_input" name="campo_pass" type="password" value=""/>
       </div>
-
+     
       <!-- lbl_usuario (Shape) -->
       <div id="u3" class="ax_paragraph" data-label="lbl_usuario">
         <img id="u3_img" class="img " src="resources/images/transparent.gif"/>
@@ -92,20 +99,17 @@
       </div>
 
       <!-- btn_ingresar (Shape) -->
-      <div id="u9" class="ax_shape" data-label="btn_ingresar">
-        <img id="u9_img" class="img " src="images/paginicio_sesion/btn_ingresar_u9.png"/>
-        <!-- Unnamed () -->
-        <div id="u10" class="text">
-          <p><span>Ingresar</span></p>
-        </div>
+      <div id="u9">
+        <input type="submit" id="u10" name='boton_login' value="Ingresar" >
       </div>
+       </form>
 
       <!-- lbl_error (Shape) -->
       <div id="u11" class="ax_paragraph" data-label="lbl_error">
         <img id="u11_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u12" class="text">
-          <p><span>Mensaje de error</span></p>
+          <p><span><?php echo $error;?></span></p>
         </div>
       </div>
     </div>
