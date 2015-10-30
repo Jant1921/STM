@@ -1,3 +1,9 @@
+<?php
+include('cuenta_crear.php');
+if(isset($_SESSION['signed_id'])){ //hay que cambiar el nombre de la variable
+header("location: pag_inicio.html");
+}
+?>
 ﻿<!DOCTYPE html>
 <html>
   <head>
@@ -444,10 +450,11 @@
           <p><span>Correo:</span></p>
         </div>
       </div>
-
-      <!-- tf_correo (Text Field) -->
+      
+      <form method="post" action="">
+                <!-- tf_correo (Text Field) -->
       <div id="u82" class="ax_text_field" data-label="tf_correo">
-        <input id="u82_input" type="text" value=""/>
+        <input id="u82_input" name="campo_correo" type="text" value=""/>
       </div>
 
       <!-- lbl_apodo (Shape) -->
@@ -461,7 +468,7 @@
 
       <!-- tf_nickname (Text Field) -->
       <div id="u85" class="ax_text_field" data-label="tf_nickname">
-        <input id="u85_input" type="text" value=""/>
+        <input id="u85_input" name="campo_nickname" type="text" value=""/>
       </div>
 
       <!-- lbl_password (Shape) -->
@@ -475,16 +482,12 @@
 
       <!-- tf_contrasena (Text Field) -->
       <div id="u88" class="ax_text_field" data-label="tf_contrasena">
-        <input id="u88_input" type="password" value=""/>
+        <input id="u88_input" name="campo_contrasena" type="password" value=""/>
       </div>
 
       <!-- btn_agregar (Shape) -->
-      <div id="u89" class="ax_shape" data-label="btn_agregar">
-        <img id="u89_img" class="img " src="images/pagequipos_nuevo/btn_agregar_u77.png"/>
-        <!-- Unnamed () -->
-        <div id="u90" class="text">
-          <p><span>Crear</span></p>
-        </div>
+      <div id="u89">
+        <input type="submit" id="u201" name='boton_crear' value="Crear" >
       </div>
 
       <!-- lbl_password (Shape) -->
@@ -498,8 +501,10 @@
 
       <!-- tf_contrasena (Text Field) -->
       <div id="u93" class="ax_text_field" data-label="tf_contrasena">
-        <input id="u93_input" type="password" value=""/>
+        <input id="u93_input" name="campo_contrasenaConfirmar" type="password" value=""/>
       </div>
+      </form>
+
     </div>
   </body>
 </html>
