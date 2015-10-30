@@ -778,7 +778,10 @@
       </div>
 
       <!-- master_admin (Barra Superior) -->
-
+      <?php
+      session_start();
+      if(isset($_SESSION['is_signed'])){
+      echo '
       <!-- Unnamed (Flow Shape) -->
       <div id="u163" class="ax_flow_shape">
         <img id="u163_img" class="img " src="images/estadisticapartido/u162.png"/>
@@ -1086,8 +1089,9 @@
             </div>
           </div>
         </div>
-      </div>
-
+      </div>';}
+      else{
+      echo'
       <!-- master_user (Barra General) -->
 
       <!-- Unnamed (Flow Shape) -->
@@ -1290,7 +1294,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>';
+      }
+      ?>      
     </div>
   </body>
 </html>

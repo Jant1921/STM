@@ -36,7 +36,7 @@ if(isset($_SESSION['is_signed'])){//verifica si hay una sesion activa
 	
 if (isset ( $_POST ['boton_login'] )) {//verifica si el boton de login ha sido presionado,para iniciar sesion
 	if (empty ( $_POST ['campo_nombre'] ) || empty ( $_POST ['campo_pass'] )) {//se verifica que ningun campo este vacio
-		$error = "Campo de Nombre de usuario o Contraseña vacío";  //guarda el mensaje de error para mostrarlo en la pagina
+		$error = "Campo de Nombre de usuario o ContraseÃ±a vacÃ­o";  //guarda el mensaje de error para mostrarlo en la pagina
 	} else {//si todos los campos tienen texto,verifica en la base de datos que sean correctos
 		$usuario = $_POST ['campo_nombre']; //guarda un una variable local el nickname ingresado por el usuario
 		$clave = $_POST ['campo_pass'];		//guarda un una variable local el password ingresado por el usuario
@@ -60,7 +60,7 @@ if (isset ( $_POST ['boton_login'] )) {//verifica si el boton de login ha sido p
 					$_SESSION['is_signed']=true;				//se establece que ya hay una sesion activa en el sistema
 					header("location: index.html"); // Se redirige al index, con sesion iniciada
 				} else {
-					$error = "Por favor verifique su usuario y/o contraseña"; //no se han introducido datos en los campos de texto
+					$error = "Por favor verifique su usuario y/o contraseï¿½a"; //no se han introducido datos en los campos de texto
 				}
 				
 				$conn->close ();//se cierra la conexion con la base de datos
