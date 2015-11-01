@@ -45,6 +45,22 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript">
+           
+        $(document).ready(function(){
+
+        $('#u27_input').change(function(){
+		var id=$('#27_input').val();
+        $('#u97_input').load('datos_catalogo.php?id='+id); // crear datos_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+
+       });    
+
+       });
+        
+</script>
+
   </head>
   <body>
     <div id="base" class="">
@@ -133,7 +149,7 @@
           <p><span>Modificar Cat</span><span>á</span><span>logos</span></p>
         </div>
       </div>
-
+            <form method="post" action="datos_catalogo.php">
       <!-- Unnamed (Shape) -->
       <div id="u17" class="ax_paragraph">
         <img id="u17_img" class="img " src="resources/images/transparent.gif"/>
@@ -145,7 +161,16 @@
 
       <!-- drp_catalogoA (Droplist) -->
       <div id="u19" class="ax_droplist" data-label="drp_catalogoA">
-        <select id="u19_input">
+        <select id="u19_input" name="catalogoagregar">
+            <option value="tipo_accion">tipo de accion</option>
+            <option value="tipo_evento">tipo de evento</option>
+            <option value="tipo_equipo">tipo de equipo</option>
+            <option value="cesped">cesped</option>
+            <option value="continente">continente</option>
+            <option value="pais">pais</option>
+            <option value="ciudad">ciudad</option>
+            <option value="formato_evento">formato de evento</option>
+            <option value="torneo">Torneo</option>          
         </select>
       </div>
 
@@ -160,18 +185,19 @@
 
       <!-- TF_NuevoDato (Text Field) -->
       <div id="u22" class="ax_text_field" data-label="TF_NuevoDato">
-        <input id="u22_input" type="text" value=""/>
+        <input id="u22_input" type="text" name=dato_insert value=""/>
       </div>
 
       <!-- btn_agregarc (Shape) -->
       <div id="u23" class="ax_shape" data-label="btn_agregarc">
-        <img id="u23_img" class="img " src="images/catalogos/btn_agregarc_u23.png"/>
-        <!-- Unnamed () -->
-        <div id="u24" class="text">
-          <p><span>Agregar</span></p>
-        </div>
+        <input type="submit" id="u24" name='agregar' value="Agregar" >
       </div>
 
+          
+      </form>
+      
+      <form method="post" action="">
+          
       <!-- Unnamed (Shape) -->
       <div id="u25" class="ax_paragraph">
         <img id="u25_img" class="img " src="resources/images/transparent.gif"/>
@@ -180,10 +206,19 @@
           <p><span>Seleccione el Cat</span><span>á</span><span>logo que desea Modificar:</span></p>
         </div>
       </div>
-
+      
       <!-- drp_modificarCatalogo (Droplist) -->
       <div id="u27" class="ax_droplist" data-label="drp_modificarCatalogo">
-        <select id="u27_input">
+        <select id="u27_input" name="catalogomod">
+            <option value="tipo_accion">tipo de accion</option>
+            <option value="tipo_evento">tipo de evento</option>
+            <option value="tipo_equipo">tipo de equipo</option>
+            <option value="cesped">cesped</option>
+            <option value="continente">continente</option>
+            <option value="pais">pais</option>
+            <option value="ciudad">ciudad</option>
+            <option value="formato_evento">formato de evento</option>
+            <option value="torneo">Torneo</option>     
         </select>
       </div>
 
@@ -198,13 +233,9 @@
 
       <!-- btn_eliminarc (Shape) -->
       <div id="u30" class="ax_shape" data-label="btn_eliminarc">
-        <img id="u30_img" class="img " src="images/catalogos/btn_agregarc_u23.png"/>
-        <!-- Unnamed () -->
-        <div id="u31" class="text">
-          <p><span>Modificar</span></p>
-        </div>
+       <input type="submit" id="u31" name='boton_modificar' value="Modificar" >
       </div>
-
+      </form>
       <!-- master_admin (Barra Superior) -->
 
       <!-- Unnamed (Flow Shape) -->
