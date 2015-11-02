@@ -368,10 +368,10 @@
           <p><span>N</span><span>ombre del </span><span>jugador</span><span>:</span></p>
         </div>
       </div>
-
+        <form method="post" action="registrar_persona.php">
       <!-- tf_nombreJugador (Text Field) -->
       <div id="u67" class="ax_text_field" data-label="tf_nombreJugador">
-        <input id="u67_input" type="text" value=""/>
+        <input id="u67_input" type="text" name="in_nombre" value=""/>
       </div>
 
       <!-- lbl_apellidoJugador (Shape) -->
@@ -385,7 +385,7 @@
 
       <!-- tf_primerApellido (Text Field) -->
       <div id="u70" class="ax_text_field" data-label="tf_primerApellido">
-        <input id="u70_input" type="text" value=""/>
+        <input id="u70_input" type="text" name="in_papellido" value=""/>
       </div>
 
       <!-- lbl_cedula (Shape) -->
@@ -399,7 +399,7 @@
 
       <!-- tf_cedulaJugador (Text Field) -->
       <div id="u73" class="ax_text_field" data-label="tf_cedulaJugador">
-        <input id="u73_input" type="text" value=""/>
+        <input id="u73_input" type="text" name="in_identificacion" value=""/>
       </div>
 
       <!-- img_jugador (Image) -->
@@ -422,11 +422,7 @@
 
       <!-- btn_agregar (Shape) -->
       <div id="u78" class="ax_shape" data-label="btn_agregar">
-        <img id="u78_img" class="img " src="images/pagequipos_nuevo/btn_agregar_u77.png"/>
-        <!-- Unnamed () -->
-        <div id="u79" class="text">
-          <p><span>Agregar</span></p>
-        </div>
+        <input type="submit" id="u79" name='boton_Agregar' value="Registrar" >
       </div>
 
       <!-- lbl_paisOrigen (Shape) -->
@@ -440,11 +436,9 @@
 
       <!-- drp_paisOrigen (Droplist) -->
       <div id="u82" class="ax_droplist" data-label="drp_paisOrigen">
-        <select id="u82_input">
-          <option value="Argentina">Argentina</option>
-          <option value="Argelia">Argelia</option>
-          <option value="Rusia">Rusia</option>
-          <option value="Suiza">Suiza</option>
+        <select id="u82_input" name="in_pais">
+           <?php include('cargar_pais.php');
+          	?>
         </select>
       </div>
 
@@ -535,7 +529,7 @@
 
       <!-- tf_segundoApellido (Text Field) -->
       <div id="u100" class="ax_text_field" data-label="tf_segundoApellido">
-        <input id="u100_input" type="text" value=""/>
+        <input id="u100_input" type="text" name="in_sapellido" value=""/>
       </div>
 
       <!-- lbl_segundoApellido (Shape) -->
@@ -548,12 +542,13 @@
       </div>
 
       <!-- drp_paisOrigen (Droplist) -->
-      <div id="u103" class="ax_droplist" data-label="drp_paisOrigen">
-        <select id="u103_input">
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
+      <div id="u103" class="ax_droplist" data-label="drp_genero">
+        <select id="u103_input" name="in_genero">
+          <?php include('cargar_genero.php');
+          	?>
         </select>
       </div>
+      </form>
     </div>
   </body>
 </html>

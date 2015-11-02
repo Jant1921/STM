@@ -76,4 +76,5 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
         header("location: catalogos.html"); // Se redirige al index, con sesion iniciada
       }
   
-          
+       ?>
+   
