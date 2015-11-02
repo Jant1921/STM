@@ -18,4 +18,5 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
 				$stmt->bind_param ( 'sssssss', $nombre,$papellido,$sapellido,$ident,$pais,$genero,$tipo);  //define los parametros que recibe la funcion
 				$stmt->execute ();                             //ejecuta el query     
             }
+            header("location: pagjugadores_nuevo.html");
         }
