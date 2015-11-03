@@ -47,22 +47,22 @@ function encrypt_decrypt($action, $string) {
         $stmt->bind_result ( $contrasenaEnBase );	//define a la variable $emailUser, donde se va a almacenar el resultado del correo
         $stmt->fetch ();								//guarda el resultado en la variable $resultado
         //$stmt->close (); //se cierra el query
-        echo "contraseña cargada\n";
+        echo "contraseÃ±a cargada\n";
         echo $contrasenaEnBase.'\n';
         }
     }
-    
-    //pregunta si la persona quiere ingresar una nueva contraseÃ±a
+
+if (isset ( $_POST ['boton_guardar'] )) {//verifica si el boton de crear cuenta fue presionado    
+        //pregunta si la persona quiere ingresar una nueva contraseÃ±a
     if (empty ( $_POST ['campo_contrasenaNueva'])) {//revisa si contraseÃ±a nueva esta vacio
           //si esta vacio no hace nada
-
-      echo "nueva vacía\n";
+      echo "nueva vacia\n";
     }else{  //sino hace el update de contraseÃ±a 
         $contraNueva = $_POST ['campo_contrasenaNueva'];
         $contrasenaAnterior = $_POST ['campo_contrasenaAnterior']; //contrasenaAnterior = a lo del campo
         $contrasenaAnterior = encrypt_decrypt ( 'encrypt', $contrasenaAnterior ); //encripta la clave para compararla con la de la base de datos
         if ($contrasenaAnterior!=$contrasenaEnBase ){
-            $error="Contraseña anterior equivocada, intente de nuevo.";          
+            $error="Contraseï¿½a anterior equivocada, intente de nuevo.";          
             echo $error;
         }else{
             $scriptUpdateUsuarioContrasena='call update_usuarioContrasena(?,?)'; //guarda en una variable local la instruccion a ejecutar
@@ -75,26 +75,27 @@ function encrypt_decrypt($action, $string) {
 
     
     if (empty ( $_POST ['campo_correo'] )) {//se verifica que ningun campo este vacio
-            $error = "Correo no puede estar vacío";  //guarda el mensaje de error para mostrarlo en la pagina
+            $error = "Correo no puede estar vacio";  //guarda el mensaje de error para mostrarlo en la pagina
             echo $error;
     }else{//si todos los campos tienen texto,verifica en la base de datos que sean correctos
             $correo = $_POST ['campo_correo']; //guarda un una variable local el correo ingresado por el usuario
             $contrasenaBefore = $_POST ['campo_contrasenaAnterior']; //contrasenaAnterior = a lo del campo
             $contrasenaBeforeEncry = encrypt_decrypt ( 'encrypt', $contrasenaBefore ); //encripta la clave para compararla con la de la base de datos
             if ($contrasenaBeforeEncry!=$contrasenaEnBase ){
-                $error="Contraseña anterior equivocada, intente de nuevo.";          
+                $error="ContraseÃ±a anterior equivocada, intente de nuevo.";          
                 echo $error;
             }else{
-                $scriptUpdateCorreo="call update_administradorCorreo(?,?)"; //guarda en una variable local la instruccion a ejecutar
+                $scriptUpdateCorreo="call update_correo(?,?)"; //guarda en una variable local la instruccion a ejecutar
                 if ($stmt = $conn->prepare ( $scriptUpdateCorreo )) { //verifica que la sentencia haya sido preparada para su ejecucion
                     $stmt->bind_param ( 'ss',$user,$correo );  //define los parametros que recibe la funcion
                     $stmt->execute ();                     //ejecuta el query    
-               		echo "se supone que cambia";
+                    echo "se supone que cambia";
                 }else{
-                	echo "parece que no se cargó el script";
+                	echo "parece que no se cargo el script";
                 }
                 echo"\nultima salida";
             }
     }
+}
  ?>
 
