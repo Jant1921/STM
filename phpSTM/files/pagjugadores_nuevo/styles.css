@@ -1,4 +1,4 @@
-﻿body {
+body {
   margin:0px;
   background-color:rgba(242, 242, 242, 1);
   background-image:none;
@@ -1056,7 +1056,7 @@
 #u74 {
   position:absolute;
   left:740px;
-  top:240px;
+  top:270px;
   width:280px;
   height:205px;
 }
@@ -1077,8 +1077,8 @@
 }
 #u76 {
   position:absolute;
-  left:830px;
-  top:445px;
+  left:740px;
+  top:495px;
   width:100px;
   height:30px;
   font-family:'Comic Sans MS Normal', 'Comic Sans MS';
@@ -1258,82 +1258,74 @@
 }
 #u89 {
   position:absolute;
-  left:2px;
-  top:8px;
-  width:166px;
-  word-wrap:break-word;
+  left:20px;
+  top:200px;
+  width:182px;
+  height:20px;
 }
-#u87_state1 {
-  position:relative;
-  left:0px;
-  top:0px;
-  visibility:hidden;
-  background-image:none;
-}
-#u87_state1_content {
+#u89_img {
   position:absolute;
   left:0px;
   top:0px;
-  width:1px;
-  height:1px;
+  width:182px;
+  height:20px;
 }
 #u90 {
   position:absolute;
   left:0px;
   top:0px;
-  width:170px;
-  height:40px;
-  opacity:0.899999976158142;
-  font-family:'Arial Negrita', 'Arial';
-  font-weight:700;
-  font-style:normal;
-  font-size:20px;
-  color:#FFFFFF;
-}
-#u90_img {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:180px;
-  height:50px;
+  width:182px;
+  word-wrap:break-word;
 }
 #u91 {
   position:absolute;
-  left:2px;
-  top:8px;
-  width:166px;
-  word-wrap:break-word;
-  text-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-  -webkit-text-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-  -moz-text-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+  left:202px;
+  top:198px;
+  width:200px;
+  height:22px;
+}
+#u91_input {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:200px;
+  height:22px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  text-decoration:none;
+  color:#000000;
+}
+#u91_input:disabled {
+  color:grayText;
 }
 #u92 {
   position:absolute;
-  left:462px;
-  top:170px;
-  width:380px;
-  height:44px;
+  left:740px;
+  top:240px;
+  width:474px;
+  height:22px;
   font-family:'Arial Negrita', 'Arial';
   font-weight:700;
   font-style:normal;
   font-size:14px;
-  color:#000000;
-  text-align:center;
 }
 #u92_img {
   position:absolute;
   left:0px;
   top:0px;
-  width:380px;
-  height:44px;
+  width:474px;
+  height:22px;
 }
 #u93 {
   position:absolute;
   left:0px;
-  top:14px;
-  width:380px;
-  word-wrap:break-word;
+  top:0px;
+  width:474px;
+  white-space:nowrap;
 }
+
 #u94 {
   position:absolute;
   left:444px;

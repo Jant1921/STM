@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php   
+include('sesion.php');
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <title>pagJugadores_nuevo</title>
@@ -368,8 +371,9 @@
           <p><span>N</span><span>ombre del </span><span>jugador</span><span>:</span></p>
         </div>
       </div>
-        <form method="post" action="registrar_persona.php">
+      <form method="post" action="registrar_persona.php">
       <!-- tf_nombreJugador (Text Field) -->
+      	
       <div id="u67" class="ax_text_field" data-label="tf_nombreJugador">
         <input id="u67_input" type="text" name="in_nombre" value=""/>
       </div>
@@ -404,19 +408,11 @@
 
       <!-- img_jugador (Image) -->
       <div id="u74" class="ax_image" data-label="img_jugador">
-        <img id="u74_img" class="img " src="images/pagjugadores_nuevo/img_jugador_u74.png"/>
-        <!-- Unnamed () -->
-        <div id="u75" class="text">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- btn_cargarImagen (Shape) -->
-      <div id="u76" class="ax_shape" data-label="btn_cargarImagen">
-        <img id="u76_img" class="img " src="images/pagequipos_nuevo/btn_cargarimagen_u79.png"/>
-        <!-- Unnamed () -->
-        <div id="u77" class="text">
-          <p><span>Cargar Imagen</span></p>
+        <?php
+        if(isset($_SESSION['foto_user'])){
+        echo '<img id="ffoto" class="img " src="'.$_SESSION['foto_user'].'"style="max-width: 200px; max-height: 200px"/>';}else{
+		echo '<img id="ffoto" class="img " src="fotos/default.png"style="max-width: 200px; max-height: 200px"/>';}
+		?>
         </div>
       </div>
 
@@ -467,6 +463,14 @@
         </div>
       </div>
 
+		<!-- drp_tipoPersona (Droplist) -->
+      <div id="u91" class="ax_droplist" data-label="drp_tipoPersona">
+        <select id="u91_input" name="in_tipo">
+          <?php include('cargar_tipo_persona.php');
+          	?>
+        </select>
+      </div>
+      
       <!-- drp_genero (Droplist) -->
       <div id="u103" class="ax_droplist" data-label="drp_genero">
         <select id="u103_input" name="in_genero">
@@ -474,7 +478,34 @@
           	?>
         </select>
       </div>
-      </form>
+      <!-- lbl_tipoPersona (Shape) -->
+      <div id="u89" class="ax_paragraph" data-label="lbl_tipoPersona">
+        <img id="u89_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u90" class="text">
+          <p><span>Tipo de Persona</span></p>
+        </div>
+      </div>
+
+</form>
+      
+      <!-- Unnamed (Shape) -->
+      <div id="u92" class="ax_paragraph">
+        <img id="u92_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u93" class="text">
+          <p><span>* Por Favor </span><span>subir</span><span> la imagen del jugador antes de ingresar los datos</span><span>.</span></p><p><span>&nbsp;</span></p>
+        </div>
+      </div>
+       <!-- btn_cargarImagen (Shape) -->
+      
+      <FORM method="POST" action="load_foto_jugador.php" ENCTYPE="multipart/form-data">
+        <div id="u76">
+          <INPUT type=file name="imagen">
+          <INPUT type=submit value="Cargar Imagen">
+      </div>
+      </FORM>
+           
     </div>
   </body>
 </html>
