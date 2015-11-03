@@ -26,7 +26,9 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
           if ($stmt = $conn->prepare ( $scriptAgregar )) { //verifica que la sentencia haya sido preparada para su ejecucion
 				$stmt->bind_param ( 'ssssssss', $nombre,$papellido,$sapellido,$ident,$pais,$genero,$tipo,$foto);  //define los parametros que recibe la funcion
 				$stmt->execute ();                             //ejecuta el query     
+          }else{
+          	echo "no se pudo insertar la persona";
           }
             
-            //header("location: pagjugadores_nuevo.html");
+            header("location: pagjugadores_nuevo.html");
         }

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <title>pagEstadios_nuevo</title>
@@ -45,6 +48,19 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript">
+           
+        $(document).ready(function(){
+
+        $('#u100_input').change(function(){
+		var id=$('#u100_input').val();
+        $('#u70_input').load('cargar_ciudadxpais.php?id='+id);
+
+       });    
+
+       });
+</script>
   </head>
   <body>
     <div id="base" class="">
@@ -368,10 +384,11 @@
           <p><span>N</span><span>ombre del </span><span>estadio</span><span>:</span></p>
         </div>
       </div>
-
+	
+	<form method="post" action="registrar_estadio.php">
       <!-- tf_nombreEstadio (Text Field) -->
       <div id="u67" class="ax_text_field" data-label="tf_nombreEstadio">
-        <input id="u67_input" type="text" value=""/>
+        <input id="u67_input" name="in_nombre" type="text" value=""/>
       </div>
 
       <!-- lbl_place (Shape) -->
@@ -379,16 +396,14 @@
         <img id="u68_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u69" class="text">
-          <p><span>Provincia:</span></p>
+          <p><span>Ciudad:</span></p>
         </div>
       </div>
 
       <!-- drp_localidadEstadio (Droplist) -->
       <div id="u70" class="ax_droplist" data-label="drp_localidadEstadio">
-        <select id="u70_input">
-          <option value="Cartago">Cartago</option>
-          <option value="San josé">San josé</option>
-          <option value="Heredia">Heredia</option>
+        <select id="u70_input" name="in_ciudad" >
+          <option value=0>Seleccione un País</option>
         </select>
       </div>
 
@@ -403,34 +418,22 @@
 
       <!-- tf_capacidad (Text Field) -->
       <div id="u73" class="ax_text_field" data-label="tf_capacidad">
-        <input id="u73_input" type="number" value=""/>
+        <input id="u73_input" name="in_capacidad" type="number" value=""/>
       </div>
 
       <!-- img_estadio (Image) -->
       <div id="u74" class="ax_image" data-label="img_estadio">
-        <img id="u74_img" class="img " src="images/pagestadios_nuevo/img_estadio_u74.png"/>
-        <!-- Unnamed () -->
-        <div id="u75" class="text">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- btn_cargarImagen (Shape) -->
-      <div id="u76" class="ax_shape" data-label="btn_cargarImagen">
-        <img id="u76_img" class="img " src="images/pagequipos_nuevo/btn_cargarimagen_u79.png"/>
-        <!-- Unnamed () -->
-        <div id="u77" class="text">
-          <p><span>Cargar Imagen</span></p>
-        </div>
+         <?php
+         
+        if(isset($_SESSION['foto_user'])){
+        echo '<img id="ffoto" class="img " src="'.$_SESSION['foto_user'].'"style="max-width: 200px; max-height: 200px"/>';}else{
+		echo '<img id="ffoto" class="img " src="fotos/default.png"style="max-width: 200px; max-height: 200px"/>';}
+		?>
       </div>
 
       <!-- btn_agregar (Shape) -->
       <div id="u78" class="ax_shape" data-label="btn_agregar">
-        <img id="u78_img" class="img " src="images/pagequipos_nuevo/btn_agregar_u77.png"/>
-        <!-- Unnamed () -->
-        <div id="u79" class="text">
-          <p><span>Agregar</span></p>
-        </div>
+        <input type="submit" id="u79" name='boton_Registrar' value="Registrar estadio" >
       </div>
 
       <!-- lbl_pasto (Shape) -->
@@ -444,89 +447,13 @@
 
       <!-- drp_localidadEstadio (Droplist) -->
       <div id="u82" class="ax_droplist" data-label="drp_localidadEstadio">
-        <select id="u82_input">
-          <option value="Natural">Natural</option>
-          <option value="Sintético">Sintético</option>
-          <option value="Híbrido">Híbrido</option>
+        <select id="u82_input" name="in_cesped">
+          <?php include('cargar_cesped.php');
+          	?>
         </select>
       </div>
 
-      <!-- Unnamed (Exito) -->
-
-      <!-- Panel Fondo (Dynamic Panel) -->
-      <div id="u84" class="ax_dynamic_panel" data-label="Panel Fondo">
-        <div id="u84_state0" class="panel_state" data-label="State1">
-          <div id="u84_state0_content" class="panel_state_content">
-
-            <!-- ventana_exito (Shape) -->
-            <div id="u85" class="ax_shape" data-label="ventana_exito">
-              <img id="u85_img" class="img " src="images/pagequipos_nuevo/ventana_exito_u83.png"/>
-              <!-- Unnamed () -->
-              <div id="u86" class="text">
-                <p><span></span></p>
-              </div>
-            </div>
-
-            <!-- btn_exito (Dynamic Panel) -->
-            <div id="u87" class="ax_dynamic_panel" data-label="btn_exito">
-              <div id="u87_state0" class="panel_state" data-label="State1">
-                <div id="u87_state0_content" class="panel_state_content">
-
-                  <!-- Unnamed (Shape) -->
-                  <div id="u88" class="ax_shape">
-                    <img id="u88_img" class="img " src="images/pagequipos_nuevo/u86.png"/>
-                    <!-- Unnamed () -->
-                    <div id="u89" class="text">
-                      <p><span>Aceptar</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="u87_state1" class="panel_state" data-label="State2">
-                <div id="u87_state1_content" class="panel_state_content">
-
-                  <!-- Unnamed (Shape) -->
-                  <div id="u90" class="ax_shape">
-                    <img id="u90_img" class="img " src="images/pagequipos_nuevo/u88.png"/>
-                    <!-- Unnamed () -->
-                    <div id="u91" class="text">
-                      <p><span>Aceptar</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- lbl_exito (Shape) -->
-            <div id="u92" class="ax_paragraph" data-label="lbl_exito">
-              <img id="u92_img" class="img " src="resources/images/transparent.gif"/>
-              <!-- Unnamed () -->
-              <div id="u93" class="text">
-                <p><span>La operación fué realizada con éxito</span></p>
-              </div>
-            </div>
-
-            <!-- contorno_ventana_exito (Shape) -->
-            <div id="u94" class="ax_shape" data-label="contorno_ventana_exito">
-              <img id="u94_img" class="img " src="images/pagequipos_nuevo/contorno_ventana_exito_u92.png"/>
-              <!-- Unnamed () -->
-              <div id="u95" class="text">
-                <p><span></span></p>
-              </div>
-            </div>
-
-            <!-- lbl_exito (Shape) -->
-            <div id="u96" class="ax_paragraph" data-label="lbl_exito">
-              <img id="u96_img" class="img " src="resources/images/transparent.gif"/>
-              <!-- Unnamed () -->
-              <div id="u97" class="text">
-                <p><span>Operación Exitosa</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      
       <!-- lbl_place (Shape) -->
       <div id="u98" class="ax_paragraph" data-label="lbl_place">
         <img id="u98_img" class="img " src="resources/images/transparent.gif"/>
@@ -538,13 +465,19 @@
 
       <!-- drp_localidadEstadio (Droplist) -->
       <div id="u100" class="ax_droplist" data-label="drp_localidadEstadio">
-        <select id="u100_input">
-          <option value="Costa Rica">Costa Rica</option>
-          <option value="Alemania">Alemania</option>
-          <option value="España">España</option>
-          <option value="Argentina">Argentina</option>
+        <select id="u100_input" name="in_pais">
+          <?php include('cargar_pais.php');
+          	?>
         </select>
       </div>
+      </form>
+      <FORM method="POST" action="load_foto_estadio.php" ENCTYPE="multipart/form-data">
+        <div id="u76">
+          <INPUT id ="btn_foto1" type=file name="imagen">
+          <INPUT id ="btn_foto2" type=submit value="Cargar Imagen">
+      </div>
+      </FORM>
+      
     </div>
   </body>
 </html>
