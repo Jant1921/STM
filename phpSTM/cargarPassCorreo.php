@@ -1,6 +1,7 @@
 <?php
-include('sesion.php');
 
+
+// en esta pagina se carga el correo para mostrarlo en el campo de correo en la pagina de editar cuenta.
 
 $conn = new mysqli ("127.0.0.1:3306", "base1", "base", "stm"); //crea la conexion con la base de datos
  if (mysqli_connect_errno ()) { //verifica si ha habido un error
@@ -13,9 +14,7 @@ $conn = new mysqli ("127.0.0.1:3306", "base1", "base", "stm"); //crea la conexio
             $stmt->bind_result ( $emailUser );	//define a la variable $emailUser, donde se va a almacenar el resultado del correo
             $stmt->fetch ();								//guarda el resultado en la variable $resultado
             //$stmt->close (); //se cierra el query
-      
-      
-    }
+      }
   }
 ?>
 

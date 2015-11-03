@@ -1,5 +1,7 @@
 <?php
+include('sesion.php');
 include('cargarPassCorreo.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -363,19 +365,20 @@ include('cargarPassCorreo.php');
         </div>
       </div>
 
+      <form method="post" action="cuenta_editar.php">
       <!-- lbl_Correo (Shape) -->
       <div id="u65" class="ax_paragraph" data-label="lbl_correo">
         <img id="u65_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
-        <div id="u66" class="text">
-          <p><span>Correo:</span></p>
+        <div id="u66" class="text">        
+          <p><span>U</span><span>suario:</span></p>
         </div>
       </div>
 
       <!-- tf_correo (Text Field) -->
-      <div id="u67" class="ax_text_field" data-label="tf_correo">   
+      <div id="u70" class="ax_text_field" data-label="tf_correo">   
           <?php
-          echo '<input id="u67_input" name="campo_correo" type="text" value="'.$emailUser.'"/>';
+          echo '<input id="u70_input" name="campo_correo" type="text" value="'.$emailUser.'"/>';
           ?>     
       </div>
       <!-- lbl_usuario (Shape) -->
@@ -383,14 +386,14 @@ include('cargarPassCorreo.php');
         <img id="u68_img" class="img " src="resources/images/transparent.gif"/> -->
         <!-- Unnamed ()  -->
         <div id="u69" class="text">
-          <p><span>U</span><span>suario:</span></p>
+          <p><span>Correo:</span></p>
         </div>
       </div>   
 
       <!-- tf_usuario (Text Field) -->
-      <div id="u70" class="ax_text_field" data-label="tf_usuario">                    
+      <div id="u67" class="ax_text_field" data-label="tf_usuario">                    
             <?php
-            echo '<input id="u70_input" name="campo_usuario" type="text" value="'.$user.'"/>';
+            echo '<input id="u67_input" name="campo_usuario" type="text" value="'.$user.'"/>';
             ?> 
       </div>  
 
@@ -405,7 +408,7 @@ include('cargarPassCorreo.php');
 
       <!-- tf_contrasena (Text Field) -->
       <div id="u73" class="ax_text_field" data-label="tf_contrasena">
-          <input id="u73_input" name="campo_contrasena" type="text" value=""/>      
+          <input id="u73_input" name="campo_contrasenaNueva" type="password" value=""/>      
       </div>
 
       <!-- lbl_contrasenaAnterior (Shape) -->
@@ -419,18 +422,17 @@ include('cargarPassCorreo.php');
 
       <!-- tf_contraseñaAnterior (Text Field) -->
       <div id="u76" class="ax_text_field" data-label="tf_nombreAnterior">
-        <input id="u76_input" type="password" value=""/>
+        <input id="u76_input" name="campo_contrasenaAnterior" type="password" value=""/>
       </div>
 
       <!-- btn_guardarCambios (Shape) -->
-      <div id="u77" class="ax_shape" data-label="btn_agregar">
-        <img id="u77_img" class="img " src="images/pagequipos_nuevo/btn_agregar_u77.png"/>
-        <!-- Unnamed () -->
-        <div id="u78" class="text">
-          <p><span>Guardar cambios</span></p>
-        </div>
+      
+      <div id="u77">
+        <input type="submit" id="u201" name='boton_guardar' value="Guardar cambios" >
       </div>
-
+      
+      </form>
+    
       <!-- Unnamed (Exito) -->
 
       <!-- Panel Fondo (Dynamic Panel) -->

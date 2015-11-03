@@ -27,8 +27,8 @@ function encrypt_decrypt($action, $string) {
 
 
 //Basado en codigo visto en: http://www.formget.com/login-form-in-php/ 
-session_start(); // Starting Session
-$error=''; // Variable To Store Error Message
+//session_start(); // Starting Session
+//$error=''; // Variable To Store Error Message
 
 
 
