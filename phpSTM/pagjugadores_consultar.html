@@ -45,6 +45,26 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript">
+           
+        $(document).ready(function(){
+            $('#u137_input').change(function(){
+                     var ide=$('#u137_input').val();
+             $('#u70_input').load('cargar_jugadoresxequipo.php?ide='+ide);
+
+                }); 
+             $('#u138_input').change(function(){
+                     var id=$('#u138_input').val();
+             $('#u137_input').load('cargar_equipoxpais.php?id='+id);
+                });    
+
+       
+   
+ });    
+
+        
+</script>
   </head>
   <body>
     <div id="base" class="">
@@ -360,35 +380,19 @@
         </div>
       </div>
 
-      <!-- lbl_nombreJugador (Shape) -->
-      <div id="u65" class="ax_paragraph" data-label="lbl_nombreJugador">
-        <img id="u65_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u66" class="text">
-          <p><span>N</span><span>ombre del </span><span>jugador</span><span>:</span></p>
-        </div>
-      </div>
 
-      <!-- tf_nombreJugador (Text Field) -->
-      <div id="u67" class="ax_text_field" data-label="tf_nombreJugador">
-        <input id="u67_input" type="text" value="Roberto"/>
-      </div>
 
       <!-- btn_consultar (Shape) -->
       <div id="u68" class="ax_shape" data-label="btn_consultar">
-        <img id="u68_img" class="img " src="images/pagequipos_nuevo/btn_agregar_u77.png"/>
-        <!-- Unnamed () -->
-        <div id="u69" class="text">
-          <p><span>Consultar</span></p>
-        </div>
+        <input type="submit" id="u69" name="btn_consulta" value="Consultar">
       </div>
 
       <!-- lbox_jugadores (List Box) -->
       <div id="u70" class="ax_list_box" data-label="lbox_jugadores">
-        <select id="u70_input" size="2">
-          <option value="Roberto Gomez">Roberto Gomez</option>
-          <option value="Roberto Juarez">Roberto Juarez</option>
-          <option value="Roberto Estrada">Roberto Estrada</option>
+        <select id="u70_input" size="2" name="lista_jxe">
+        
+            
+            
         </select>
       </div>
 
@@ -691,6 +695,39 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- drp_Equipo (Droplist) -->
+      <div id="u137" class="ax_droplist" data-label="drp_Equipo">
+        <select id="u137_input">
+               
+        </select>
+      </div>
+
+      <!-- drp_pais (Droplist) -->
+      <div id="u138" class="ax_droplist" data-label="drp_pais">
+        <select id="u138_input" name="drp_paises">
+               <option value= -1 > Seleccion un pais </option>
+            <?php include('cargar_pais.php');
+          	?>
+        </select>
+      </div>
+
+      <!-- lbl_pais (Shape) -->
+      <div id="u139" class="ax_paragraph" data-label="lbl_pais">
+        <img id="u139_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u134" class="text">
+          <p><span>Pais</span></p>
+        </div>
+      </div>
+
+      <!-- lbl_equipo (Shape) -->
+      <div id="u135" class="ax_paragraph" data-label="lbl_equipo">
+        <img id="u135_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u136" class="text">
+          <p><span>Equipo</span></p>
         </div>
       </div>
     </div>
