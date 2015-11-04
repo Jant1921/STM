@@ -12,7 +12,7 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
           if ($stmt = $conn->prepare ( $scriptAgregar )) { //verifica que la sentencia haya sido preparada para su ejecucion
 				$stmt->bind_param ( 's', $dato );  //define los parametros que recibe la funcion
 				$stmt->execute ();                             //ejecuta el query     
-            }
+          }
         }
         //-------------------------------------------------------------------------------------------------
         if($catalogo=='tipo_accion'){
