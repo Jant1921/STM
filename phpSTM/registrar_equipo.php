@@ -25,8 +25,7 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
 				$stmt->execute ();                             //ejecuta el query     
           }else{
           	echo "no se pudo insertar el equipo";
-          }
-            
+          }       
             header("location: pagequipos_nuevo.html");
     }
 

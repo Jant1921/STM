@@ -45,6 +45,20 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+        
+    <script type="text/javascript">
+           
+        $(document).ready(function(){ 
+             $('#u70_input').change(function(){
+                     var id=$('#u70_input').val();
+             $('#u86_input').load('cargar_clubxequipo.php?id='+id);
+                });    
+    });          
+</script>
+    
+    
+    
+    
   </head>
   <body>
     <div id="base" class="">
@@ -383,13 +397,16 @@
         <input id="u69_input" type="text" value=""/>
       </div>
 
-      <!-- Unnamed (Droplist) -->
-      <div id="u70" class="ax_droplist">
-        <select id="u70_input">
-          <option value="Selección">Selección</option>
-          <option value="Club">Club</option>
+      <!-- drp_tipoEquipo (Droplist) -->
+      <div id="u70" class="ax_droplist" data-label="drp_equipos">
+        <select id="u70_input" name="drp_tipoEquipo">
+            <?php include('cargar_tipoEquipo.php');
+          	?>
         </select>
       </div>
+      
+   
+      
 
       <!-- lbl_nombreEquipo (Shape) -->
       <div id="u71" class="ax_paragraph" data-label="lbl_nombreEquipo">
@@ -466,14 +483,12 @@
         </div>
       </div>
 
-      <!-- Unnamed (Droplist) -->
-      <div id="u86" class="ax_droplist">
-        <select id="u86_input">
-          <option value="Real Madrid CF">Real Madrid CF</option>
-          <option value="Barcelona">Barcelona</option>
+      <!-- drp_equipos (Droplist) -->
+      <div id="u86" class="ax_droplist" data-label="drp_Equipo">
+        <select id="u86_input" name="campo_equipo">
         </select>
       </div>
-
+      
       <!-- lbl_nombreEquipo (Shape) -->
       <div id="u87" class="ax_paragraph" data-label="lbl_nombreEquipo">
         <img id="u87_img" class="img " src="resources/images/transparent.gif"/>
