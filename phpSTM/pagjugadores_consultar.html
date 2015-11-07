@@ -64,10 +64,42 @@
             //mostrar datos del jugador
              $('#u70_input').change(function(){
                      var idz=$('#u70_input').val();  
-             $('#u75').load('cargar_datos_jugador.php?idz='+idz);
-                });    
+             $('#u75').load('cargar_nombre_jugador.php?idz='+idz);
+                });
+                
+              $('#u70_input').change(function(){
+                     var idz=$('#u70_input').val();  
+             $('#u82').load('cargar_nacionalidad_jugador.php?idz='+idz);
+             });
+             
+             $('#u70_input').change(function(){
+                     var idz=$('#u70_input').val();  
+             $('#u84').load('cargar_identificacion_persona.php?idz='+idz);
+             });
+  
+             $('#u70_input').change(function(){
+                     var idz=$('#u70_input').val();
+                     var idc=$('#u137_input').val();
 
-        
+             $('#u91').load('cargar_dorsal_jugador.php?var1='+idz +'&var2='+idc);
+             //,{'idf':idz, 'ids':idc});
+             
+             });
+             
+             $('#u70_input').change(function(){
+                     var idz=$('#u70_input').val();
+                     
+
+             $('#u87_input').load('cargar_equiposxjugador.php?id='+idz);
+             //,{'idf':idz, 'ids':idc});
+             
+             });
+  
+  
+
+
+                        
+
     });    
 
         
@@ -450,7 +482,7 @@
         <img id="u81_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u82" class="text">
-          <p><span>Portugues</span></p>
+          
         </div>
       </div>
 
@@ -459,7 +491,7 @@
         <img id="u83_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u84" class="text">
-          <p><span>30540234</span></p>
+          
         </div>
       </div>
 
@@ -475,8 +507,7 @@
       <!-- lbox_equiposJugador (List Box) -->
       <div id="u87" class="ax_list_box" data-label="lbox_equiposJugador">
         <select id="u87_input" size="2">
-          <option value="Portugal">Portugal</option>
-          <option value="Oporto">Oporto</option>
+          
         </select>
       </div>
 
@@ -494,7 +525,7 @@
         <img id="u90_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u91" class="text">
-          <p><span>11</span></p>
+        
         </div>
       </div>
 
@@ -703,7 +734,7 @@
       </div>
       <!-- drp_Equipo (Droplist) -->
       <div id="u137" class="ax_droplist" data-label="drp_Equipo">
-        <select id="u137_input">          
+          <select id="u137_input" name="drop_team">          
         </select>
       </div>
 
