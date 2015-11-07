@@ -45,6 +45,18 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    
+    <script type="text/javascript">
+           
+        $(document).ready(function(){ 
+             $('#u82_input').change(function(){
+                     var id=$('#u82_input').val();
+             $('#u83_input').load('cargar_checks_equiposxtipo.php?id='+id);
+                });    
+    });          
+</script>
+   
+    
   </head>
   <body>
     <div id="base" class="">
@@ -360,6 +372,7 @@
         </div>
       </div>
 
+      
       <!-- lbl_name (Shape) -->
       <div id="u65" class="ax_paragraph" data-label="lbl_name">
         <img id="u65_img" class="img " src="resources/images/transparent.gif"/>
@@ -459,8 +472,8 @@
       <!-- Unnamed (Droplist) -->
       <div id="u82" class="ax_droplist">
         <select id="u82_input">
-          <option value="Clubes">Clubes</option>
-          <option value="Selecciones">Selecciones</option>
+          <?php include('cargar_tipoEquipo.php');
+          	?>
         </select>
       </div>
 
@@ -484,6 +497,7 @@
           <p><span>Crear</span></p>
         </div>
       </div>
+      
     </div>
   </body>
 </html>
