@@ -9,19 +9,17 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
       $tipo = $_POST ['campo_tipoEquipo']; //guarda un una variable local el catalogo seleccionado
       
       
-      /*if(isset($_SESSION['foto_user'])){  //verifica si se ha cargado una foto a la pesona nueva
+      if(isset($_SESSION['foto_user'])){  //verifica si se ha cargado una foto a la pesona nueva
       	$foto=$_SESSION['foto_user']; //guarda la ruta en una variable local
-      	echo $foto;
       	unset($_SESSION['foto_user']); //borra la ruta, de sesion, para que no aparezca cuando se crea otra persona
       	}    
       else{	
-      	echo 'segun esto no est�'.$_SESSION['foto_user'];
       	$foto="fotos/default.png";  //si no se ha cargado una imagen,se asigna una predeterminada
-      }*/
+      }
     
-        $scriptAgregar='call insert_equipo(?,?,?)'; //guarda en una variable local la instruccion a ejecutar
+        $scriptAgregar='call insert_equipo(?,?,?,?)'; //guarda en una variable local la instruccion a ejecutar
           if ($stmt = $conn->prepare ( $scriptAgregar )) { //verifica que la sentencia haya sido preparada para su ejecucion
-				$stmt->bind_param ( 'sss', $nombre,$ubicacion,$tipo);  //define los parametros que recibe la funcion
+				$stmt->bind_param ( 'ssss', $nombre,$ubicacion,$tipo,$foto);  //define los parametros que recibe la funcion
 				$stmt->execute ();                             //ejecuta el query     
           }else{
           	echo "no se pudo insertar el equipo";

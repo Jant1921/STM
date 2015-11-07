@@ -14,11 +14,9 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
       
       if(isset($_SESSION['foto_user'])){  //verifica si se ha cargado una foto a la pesona nueva
       	$foto=$_SESSION['foto_user']; //guarda la ruta en una variable local
-      	echo $foto;
       	unset($_SESSION['foto_user']); //borra la ruta, de sesion, para que no aparezca cuando se crea otra persona
       	}    
       else{	
-      	echo 'segun esto no está'.$_SESSION['foto_user'];
       	$foto="fotos/default.png";  //si no se ha cargado una imagen,se asigna una predeterminada
       }
     

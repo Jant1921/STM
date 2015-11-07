@@ -1,4 +1,4 @@
-﻿body {
+body {
   margin:0px;
   background-color:rgba(242, 242, 242, 1);
   background-image:none;
@@ -1083,7 +1083,7 @@
 #u75 {
   position:absolute;
   left:880px;
-  top:262px;
+  top:200px;
   width:290px;
   height:210px;
 }
@@ -1106,8 +1106,8 @@
   position:absolute;
   left:630px;
   top:570px;
-  width:100px;
-  height:30px;
+  width:0px;
+  height:0px;
   font-family:'Arial Negrita', 'Arial';
   font-weight:700;
   font-style:normal;
@@ -1129,8 +1129,8 @@
 }
 #u79 {
   position:absolute;
-  left:975px;
-  top:482px;
+  left:900px;
+  top:430px;
   width:100px;
   height:30px;
   font-family:'Comic Sans MS Normal', 'Comic Sans MS';
@@ -1148,8 +1148,8 @@
 #u80 {
   position:absolute;
   left:2px;
-  top:6px;
-  width:96px;
+  top:70px;
+  width:300px;
   word-wrap:break-word;
 }
 #u82 {
@@ -1365,4 +1365,31 @@
   top:10px;
   width:188px;
   word-wrap:break-word;
+}
+
+#uBtn {
+  background: #26a8ff;
+  background-image: -webkit-linear-gradient(top, #26a8ff, #061721);
+  background-image: -moz-linear-gradient(top, #26a8ff, #061721);
+  background-image: -ms-linear-gradient(top, #26a8ff, #061721);
+  background-image: -o-linear-gradient(top, #26a8ff, #061721);
+  background-image: linear-gradient(to bottom, #26a8ff, #061721);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+#uBtn:hover {
+  background: #113247;
+  background-image: -webkit-linear-gradient(top, #113247, #3cb0fd);
+  background-image: -moz-linear-gradient(top, #113247, #3cb0fd);
+  background-image: -ms-linear-gradient(top, #113247, #3cb0fd);
+  background-image: -o-linear-gradient(top, #113247, #3cb0fd);
+  background-image: linear-gradient(to bottom, #113247, #3cb0fd);
+  text-decoration: none;
 }

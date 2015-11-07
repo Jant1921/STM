@@ -9,6 +9,7 @@ if (! empty ( $_POST ['in_nombre'] ) || ! empty ( $_POST ['in_capacidad'] ) || !
 		$capacidad = $_POST ['in_capacidad'];
 		$cesped= $_POST ['in_cesped'] ;
 		$ciudad= $_POST ['in_ciudad'];
+		$foto='fotos/default.png';
 		if(isset($_SESSION['foto_user'])){  //verifica si se ha cargado una foto a la pesona nueva
 			$foto=$_SESSION['foto_user']; //guarda la ruta en una variable local
 			echo $foto;
