@@ -1,3 +1,4 @@
+
 ﻿<!DOCTYPE html>
 <html>
   <head>
@@ -49,14 +50,21 @@
        <script type="text/javascript">
            
         $(document).ready(function(){
+            //cargar los jugadores en listbox
             $('#u137_input').change(function(){
                      var ide=$('#u137_input').val();
              $('#u70_input').load('cargar_jugadoresxequipo.php?ide='+ide);
 
-                }); 
+                });
+              //cargar los equipos en combobox  
              $('#u138_input').change(function(){
                      var id=$('#u138_input').val();
              $('#u137_input').load('cargar_equipoxpais.php?id='+id);
+                });
+            //mostrar datos del jugador
+             $('#u70_input').change(function(){
+                     var idz=$('#u70_input').val();  
+             $('#u75').load('cargar_datos_jugador.php?idz='+idz);
                 });    
 
         
@@ -415,11 +423,8 @@
 
       <!-- lbl_nombreJugador (Shape) -->
       <div id="u75" class="ax_paragraph" data-label="lbl_nombreJugador">
-        <img id="u75_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u76" class="text">
-          <p><span>Roberto Gomez Da Silva</span></p>
-        </div>
+        
+       
       </div>
 
       <!-- lbl_nacido (Shape) -->
