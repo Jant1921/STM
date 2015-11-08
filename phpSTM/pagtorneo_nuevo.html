@@ -372,7 +372,7 @@
         </div>
       </div>
 
-      
+      <form method="post" action="registrar_evento.php">
       <!-- lbl_name (Shape) -->
       <div id="u65" class="ax_paragraph" data-label="lbl_name">
         <img id="u65_img" class="img " src="resources/images/transparent.gif"/>
@@ -384,7 +384,7 @@
 
       <!-- tf_nombre (Text Field) -->
       <div id="u67" class="ax_text_field" data-label="tf_nombre">
-        <select id="u70_input">
+        <select id="u70_input" name="in_torneo">
           <?php include('cargar_torneo_nombre.php');?>
         </select>
       </div>
@@ -400,7 +400,7 @@
 
       <!-- Unnamed (Droplist) -->
       <div id="u70" class="ax_droplist">
-        <select id="u70_input">
+        <select id="u70_input" name="in_genero">
           <?php include('cargar_genero.php');
           	?>
         </select>
@@ -417,7 +417,7 @@
 
       <!-- Unnamed (Droplist) -->
       <div id="u73" class="ax_droplist">
-        <select id="u73_input">
+        <select id="u73_input" name="in_tipo_evento">
           <?php include('cargar_tipo_evento.php');
           	?>
         </select>
@@ -434,11 +434,9 @@
 
       <!-- Unnamed (Droplist) -->
       <div id="u76" class="ax_droplist">
-        <select id="u76_input">
-          <option value="4">4</option>
-          <option value="8">8</option>
-          <option value="16">16</option>
-          <option value="32">32</option>
+        <select id="u76_input" name="in_cantidad">
+          <?php include('cargar_cantidad_equipos.php');
+          	?>
         </select>
       </div>
 
@@ -453,7 +451,7 @@
 
       <!-- Unnamed (Droplist) -->
       <div id="u79" class="ax_droplist">
-        <select id="u79_input">
+        <select id="u79_input" name="in_pais">
           <?php include('cargar_pais.php');
           	?>
         </select>
@@ -472,7 +470,7 @@
 
       <!-- Unnamed (Droplist) -->
       <div id="u82" class="ax_droplist">
-        <select id="u82_input">
+        <select id="u82_input" name="in_tipo_equipo">
           <?php include('cargar_tipoEquipo.php');
           	?>
         </select>
@@ -491,15 +489,15 @@
 				<li><p><span>Seleccione un tipo de equipo</span></p></li>
 			</ul>
 		</div>
-
+	
       <!-- Unnamed (Shape) -->
       <div id="u84" class="ax_shape">
-        <img id="u84_img" class="img " src="images/pagtorneo_nuevo/u84.png"/>
-        <!-- Unnamed () -->
-        <div id="u85" class="text">
-          <p><span>Crear</span></p>
-        </div>
+       <input type="submit" id="btn_crear" name='boton_Crear' value="Crear" >
       </div>
+      
+	</form>
+
+      
       
     </div>
   </body>
