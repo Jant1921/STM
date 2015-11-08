@@ -24,5 +24,4 @@ if (mysqli_connect_errno ()) { // verifica si ha habido un error
 		$stmt->close ();
 	}
 }
-
 ?>
