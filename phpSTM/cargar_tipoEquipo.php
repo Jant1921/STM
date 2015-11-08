@@ -9,7 +9,7 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
       $consulta= "Select tipo_equipo_Id , Tipo_Equipo_Nombre from tipo_equipo" ;
       
       $resultad= mysqli_query($conn,$consulta);
-
+      echo '<option value=-1>Seleccion un tipo de equipo</option>';
       while ($fila = mysqli_fetch_array($resultad)) {
             echo "<option value=".$fila['tipo_equipo_Id'].">".$fila['Tipo_Equipo_Nombre']."</option>"; // colocacion de los datos consultados en el droplist
         }
