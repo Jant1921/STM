@@ -8,7 +8,7 @@ if (mysqli_connect_errno ()) { // verifica si ha habido un error
 	$consulta = "select persona_Id,Persona_Nombre from persona where Persona_Nacionalidad=? and Persona_Tipo=1";
 	if ($stmt = $conn->prepare ($consulta)) {
             
-		$stmt->bind_param ( 's',$_GET['ide']);  //define los parametros que recibe la funcion
+		$stmt->bind_param ( 's',$_GET['id']);  //define los parametros que recibe la funcion
 		$stmt->execute ();
 		
 		/* bind variables to prepared statement */
@@ -23,5 +23,4 @@ if (mysqli_connect_errno ()) { // verifica si ha habido un error
 		$stmt->close ();
 	}
 }
-
 ?>
