@@ -14,10 +14,9 @@ if (mysqli_connect_errno ()) { // verifica si ha habido un error
 		/* bind variables to prepared statement */
 		$stmt->bind_result ( $equipo_id, $equipo_nombre);
 		
-                echo '<option value=-1>Seleccion un equipo</option>'; // colocacion de los datos consultados en el droplist
-		/* fetch values */
+      	/* fetch values */
 		while ( $stmt->fetch () ) {
-			echo '<option value='.$equipo_id.'>'.$equipo_nombre.'</option>'; // colocacion de los datos consultados en el droplist
+			echo '<li><label><input type="checkbox" name="teams[]" value="'.$equipo_id.'">'.$equipo_nombre.'</label></li>';// colocacion de los datos consultados en el droplist
         }
 		
 		/* close statement */

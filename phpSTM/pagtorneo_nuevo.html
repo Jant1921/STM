@@ -51,7 +51,7 @@
         $(document).ready(function(){ 
              $('#u82_input').change(function(){
                      var id=$('#u82_input').val();
-             $('#u83_input').load('cargar_checks_equiposxtipo.php?id='+id);
+             $('#team_name').load('cargar_checks_equiposxtipo.php?id='+id);
                 });    
     });          
 </script>
@@ -384,7 +384,9 @@
 
       <!-- tf_nombre (Text Field) -->
       <div id="u67" class="ax_text_field" data-label="tf_nombre">
-        <input id="u67_input" type="text" value="Rusia 2018"/>
+        <select id="u70_input">
+          <?php include('cargar_torneo_nombre.php');?>
+        </select>
       </div>
 
       <!-- lbl_lastName (Shape) -->
@@ -399,8 +401,8 @@
       <!-- Unnamed (Droplist) -->
       <div id="u70" class="ax_droplist">
         <select id="u70_input">
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
+          <?php include('cargar_genero.php');
+          	?>
         </select>
       </div>
 
@@ -416,8 +418,8 @@
       <!-- Unnamed (Droplist) -->
       <div id="u73" class="ax_droplist">
         <select id="u73_input">
-          <option value="Liga">Liga</option>
-          <option value="Copa">Copa</option>
+          <?php include('cargar_tipo_evento.php');
+          	?>
         </select>
       </div>
 
@@ -452,11 +454,8 @@
       <!-- Unnamed (Droplist) -->
       <div id="u79" class="ax_droplist">
         <select id="u79_input">
-          <option value="Alemania">Alemania</option>
-          <option value="Brasil">Brasil</option>
-          <option value="Estados Unidos">Estados Unidos</option>
-          <option value="Rusia">Rusia</option>
-          <option value="Qatar">Qatar</option>
+          <?php include('cargar_pais.php');
+          	?>
         </select>
       </div>
 
@@ -465,7 +464,9 @@
         <img id="u80_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u81" class="text">
-          <p><span>Tipo de equipos</span></p>
+          <p><span>Tipo de equipos:</span></p>
+          <p><span>.</span></p>
+          <p><span>Seleccione los equipos participantes:</span></p>
         </div>
       </div>
 
@@ -479,15 +480,17 @@
 
       <!-- lb_equipos (List Box) -->
       <div id="u83" class="ax_list_box" data-label="lb_equipos">
-        <select id="u83_input" size="2">
-          <option value="Real Madrid CF">Real Madrid CF</option>
-          <option value="Roma">Roma</option>
-          <option value="Barcelona">Barcelona</option>
-          <option value="Atletic Club">Atletic Club</option>
-          <option value="Real Zaragoza">Real Zaragoza</option>
-          <option value="Saprissa">Saprissa</option>
-        </select>
-      </div>
+			<style type="text/css">
+			   ul { height: 275px; width: 350px; border: 1px solid #000; }
+			   ul { list-style-type: none; margin: 0; padding: 0; overflow-x: hidden; }
+			   li { margin: 0; padding: 0; }
+			   label { display: block; color: WindowText; background-color: Window; margin: 0; padding: 0; width: 100%; }
+			   label:hover { background-color: Highlight; color: HighlightText; }
+		     </style>
+			<ul id="team_name">
+				<li><p><span>Seleccione un tipo de equipo</span></p></li>
+			</ul>
+		</div>
 
       <!-- Unnamed (Shape) -->
       <div id="u84" class="ax_shape">
