@@ -45,21 +45,60 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    
+        <script type="text/javascript">
+        //carga el jugador segun el pais
+        $(document).ready(function(){ 
+             $('#u67_input').change(function(){
+                     var id=$('#67_input').val();
+                     alert(id);
+             $('#u89_input').load('cargar_jugadoresxpais.php?id='+id);
+                });    
+           
+        
+        //carga el jugador segun el equipo
+      
+             $('#u0_input').change(function(){
+                     var ide=$('#u0_input').val();
+                     alert(ide);
+             $('#u77_input').load('cargar_jugadoresxequipo.php?ide='+ide);
+                });    
+        
+            
+        //carga el equipo segun el club   
+ 
+             $('#u1_input').change(function(){
+                     var idz=$('#u1_input').val();
+             $('#u0_input').load('cargar_clubxequipo.php?id='+idz);
+                });    
+        });    
+        
+        
+
+        
+   
+        </script>
+
+    
   </head>
   <body>
     <div id="base" class="">
 
       <!-- drp_equipo (Droplist) -->
       <div id="u0" class="ax_droplist" data-label="drp_equipo">
-        <select id="u0_input">
+        <select id="u0_input" name="campo_equipo">
         </select>
       </div>
 
       <!-- drp_tipo_equipo (Droplist) -->
       <div id="u1" class="ax_droplist" data-label="drp_tipo_equipo">
-        <select id="u1_input">
+        <select id="u1_input" name="campo_tipoEquipo">
+            <?php include('cargar_tipoEquipo.php');
+          	?>
         </select>
       </div>
+      
+      
 
       <!-- master_admin (Barra Superior) -->
 
@@ -372,9 +411,11 @@
         </div>
       </div>
 
-      <!-- drp_jugador (Droplist) -->
-      <div id="u67" class="ax_droplist" data-label="drp_jugador">
-        <select id="u67_input">
+      <!-- drp_pais (Droplist) -->
+      <div id="u67" class="ax_droplist" data-label="drp_pais">
+        <select id="u67_input" name="campo_pais">
+            <?php include('cargar_pais.php');
+          	?>
         </select>
       </div>
 
@@ -421,7 +462,7 @@
 
       <!-- drp_jugador (Droplist) -->
       <div id="u77" class="ax_droplist" data-label="drp_jugador">
-        <select id="u77_input">
+        <select id="u77_input" name="campo_jugadorEliminar">
         </select>
       </div>
 
@@ -477,9 +518,9 @@
         <img id="u88_line" class="img " src="images/pagequipos_editarplantilla/u88_line.png" alt="u88_line"/>
       </div>
 
-      <!-- Unnamed (List Box) -->
+      <!-- list_box jugadores (List Box) -->
       <div id="u89" class="ax_list_box">
-        <select id="u89_input" size="2">
+        <select id="u89_input" size="2" name="lista_jxp">
         </select>
       </div>
 
