@@ -55,7 +55,32 @@
 		var id=$('#27_input').val();
         $('#u97_input').load('datos_catalogo.php?id='+id); // crear datos_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
 
-       });    
+       });  
+       
+    
+
+       
+       
+       $('#u27_input').change(function(){
+          alert($('#u27_input').val());
+           if($('#u27_input').val()=="continente"){
+                u102.style.display= 'block';
+                
+           }else{
+                u102.style.display= 'none';
+                u104.style.display= 'none';        
+           }
+       });
+       
+       
+      $('#u102_input').change(function(){           
+                u104.style.display= 'block'; 
+           
+       });
+
+       
+
+       
 
        });
         
@@ -491,6 +516,41 @@
       <div id="u100" class="ax_text_field" data-label="TF_editDato">
         <input id="u100_input" type="text" value=""/>
       </div>
+      
+      
+      <!-------------------------------------------------------------new listbox-------------------------->
+      <!-- drp_catalogoB (Droplist) -->
+      <div id="u101" class="ax_droplist" data-label="drp_catalogoB" style="display:none">
+        <select id="u101_input">
+        <option value="-1" id="a">Seleccione un país</option>
+        <option value="-2" id="a">Seleccione un aaapaís</option>
+
+        </select>
+      </div>
+
+      <!-- drp_modificarCatalogoB (Droplist) -->
+      <div id="u102" class="ax_droplist" data-label="drp_modificarCatalogoB" style="display:none">
+        <select id="u102_input">
+            <option value="-1" id="a">Seleccione un país</option>
+            <option value="-2" id="a">Seleccione un pppppaís</option>
+        </select>
+      </div>
+
+      <!-- drp_catalogoC (Droplist) -->
+      <div id="u103" class="ax_droplist" data-label="drp_catalogoC" style="display:none">
+        <select id="u103_input">
+         <option value="3" id="a">apple3</option>   
+        </select>
+      </div>
+
+      <!-- drp_modificarCatalogoC (Droplist) -->
+      <div id="u104" class="ax_droplist" data-label="drp_modificarCatalogoC" style="display:none">
+        <select id="u104_input">
+             <option value="4" id="a">11apple3</option>  
+        </select>
+      </div>
+      
+      
     </div>
   </body>
 </html>
