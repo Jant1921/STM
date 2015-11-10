@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+error_reporting(E_ALL ^ E_WARNING);
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Index</title>
@@ -51,10 +54,9 @@
 
       <!-- tbl_estadisticasTorneo (Table) -->
       <div id="u0" class="ax_table" data-label="tbl_estadisticasTorneo">
-			<table style="width: 100%" bgcolor="#FFFFF" BORDER=1 RULES=ALL	FRAME=VOID>
-				<tr><td>Cantidad De Equipos</td><td></td><td>Nombre del Torneo</td><td></td><td>Sede</td><td></td><td>Género</td></tr>
+			<table style="width: 100%"  BORDER=1 RULES=ALL	FRAME=VOID>
+				<tr bgcolor="#BBBBBB" ><td>Cantidad De Equipos</td><td></td><td>Nombre del Torneo</td><td></td><td>Sede</td><td></td><td>Género</td></tr>
 				<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td>cantidad</td><td></td><td><a href="estadisticatorneo.html?id=3">Nombre</a></td><td></td><td>sede</td><td></td><td>genero</td></tr>
 				<?php include('cargar_tabla_eventos.php');
           	?>
 			</table>
