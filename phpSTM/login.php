@@ -51,9 +51,9 @@ if (isset ( $_POST ['boton_login'] )) {//verifica si el boton de login ha sido p
 			$query = "select loguear(?,?)";    //define la funcion loguear, que se va a ejecutar en la base de datos para verificar si nickname y password son correctos
 			if ($stmt = $conn->prepare ( $query )) { //verifica que la sentencia haya sido preparada para su ejecucion
 				$stmt->bind_param ( 'ss', $usuario, $clave );  //define los parametros que recibe la funcion
-				$stmt->execute ();                             //ejecuta el query
+				$stmt->execute ();                          //ejecuta el query
 				$stmt->bind_result ( $resultado );				//define a la variable $resultado, donde se va a almacenar el resultado
-				$stmt->fetch ();								//guarda el resultado en la variable $resultado
+				$stmt->fetch ();			//guarda el resultado en la variable $resultado
 				$stmt->close (); //se cierra el query
 				if ($resultado == $usuario) {                  //verifica que la funcion haya encontrado un usuario que cumpla con los datos ingresados para el login 
 					$_SESSION['signed_nombre']=$usuario;       //guarda el nombre del usuario para mantenerlo durante toda la sesion

@@ -27,40 +27,6 @@ function encrypt_decrypt($action, $string) {
 }
 
 
-
-/*function contrasenaBase(){
-        $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexion con la base de datos
-	if (mysqli_connect_errno ()) { //verifica si ha habido un error
-                $error = mysqli_connect_error (); //guarda el mensaje de error para mostrarlo en la pagina
-        }else{ //si no han habido errores
-            $query = "select select_contrasena(?)";    //define la funcion loguear, que se va a ejecutar en la base de datos para verificar si nickname y password son correctos
-            if ($stmt = $conn->prepare ( $query )) { //verifica que la sentencia haya sido preparada para su ejecucion
-                    $stmt->bind_param ( 's', $user);  //define los parametros que recibe la funcion
-                    $stmt->execute ();                             //ejecuta el query
-                    $stmt->bind_result ( $resultado );				//define a la variable $resultado, donde se va a almacenar el resultado
-                    $stmt->fetch ();								//guarda el resultado en la variable $resultado
-                    $stmt->close (); //se cierra el query
-            }else{
-                echo "No entro a hacer el select";
-            }
-        $resultado=  encrypt_decrypt('decrypt', $resultado);
-        echo "contrasena en base --->";
-        echo $resultado;
-        return $resultado;
-    }
-}*/
-
-
-/*function comparaContrasena($contraActual){
-    if($contraActual===$passBase){
-       return true;
-    }
-    return false;
-}*/
-
-
-
-
 $error ="";
 if (isset ( $_POST ['boton_guardar'] )) {//verifica si el boton de crear cuenta fue presionado
     $correoNuevo=$_POST ['campo_correo'];

@@ -44,14 +44,4 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
 
 
 
-    /*$equipo = $_POST ['campo_equipo']; //guarda un una variable local el catalogo seleccionado
-    $jugador = $_POST ['lista_jxp']; //guarda un una variable local el catalogo seleccionado
-    $dorsal = $_POST ['campo_dorsal']; //guarda un una variable local el catalogo seleccionado 
-    $scriptAgregar='call insert_jugadorxequipo(?,?,?)'; //guarda en una variable local la instruccion a ejecutar
-    if ($stmt = $conn->prepare ( $scriptAgregar )) { //verifica que la sentencia haya sido preparada para su ejecucion
-        $stmt->bind_param ( 'sss', $jugador,$equipo,$dorsal);  //define los parametros que recibe la funcion
-        $stmt->execute ();                             //ejecuta el query     
-    }else{
-        echo "No se pudo insertar el jugador al equipo";
-    }
-    header("location: pagequipos_editarplantilla.html");*/
+  

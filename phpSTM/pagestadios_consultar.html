@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>pagEstadios_consultar</title>
@@ -45,6 +45,46 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript">
+           
+        $(document).ready(function(){
+            //cargar los jugadores en listbox
+            $('#u2_input').change(function(){
+                     var ide=$('#u2_input').val();
+             $('#u73').load('consultar_estadioNombre.php?id='+ide);
+             });
+             
+             //cargar localidad del estadio 
+             $('#u2_input').change(function(){
+                     var id=$('#u2_input').val();
+             $('#u79').load('consultar_estadioLocalidad.php?id='+id);
+                });
+                
+             //cargar capcidad estadio
+             $('#u2_input').change(function(){
+                     var id=$('#u2_input').val();
+             $('#u81').load('consultar_estadioCapacidad.php?id='+id);
+                });
+                
+                
+              //cargar cesped estadio
+             $('#u2_input').change(function(){
+                     var id=$('#u2_input').val();
+             $('#u85').load('consultar_estadioCesped.php?id='+id);
+                });
+                
+             //cargar imagen de estadio
+             $('#u2_input').change(function(){
+                     var id=$('#u2_input').val();
+             $('#u70').load('consultar_estadioImagen.php?id='+id);
+                });
+         });
+        </script>
+    
+
+   
   </head>
   <body>
     <div id="base" class="">
@@ -54,26 +94,27 @@
         <img id="u0_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u1" class="text">
-          <p><span>Digite el n</span><span>ombre del </span><span>estadio:</span></p>
+          <p><span>Seleccione el n</span><span>ombre del </span><span>estadio:</span></p>
         </div>
       </div>
-
-      <!-- tf_consultaNombre (Text Field) -->
-      <div id="u2" class="ax_text_field" data-label="tf_consultaNombre">
-        <input id="u2_input" type="text" value="Santiago Bernabeu"/>
+      
+      
+      <!-- drp_estadioNombre (Droplist) -->
+      <div id="u2" class="ax_droplist" data-label="drp_estadio">
+        <select id="u2_input" name="campo_estadioNombre">
+            <?php include('cargar_estadios.php');
+          	?>
+        </select>
       </div>
+      
+                 
+      <!-- btn_agregar (Shape) 
+      <div id="u3" class="ax_shape" data-label="btn_agregar">
+        <input type="submit" id="uBtn" name='boton_consultar' value="Consultar" >
+      </div>-->
 
-      <!-- btn_consultar (Shape) -->
-      <div id="u3" class="ax_shape" data-label="btn_consultar">
-        <img id="u3_img" class="img " src="images/pagequipos_nuevo/btn_agregar_u77.png"/>
-        <!-- Unnamed () -->
-        <div id="u4" class="text">
-          <p><span>Consultar</span></p>
-        </div>
-      </div>
-
+      
       <!-- master_admin (Barra Superior) -->
-
       <!-- Unnamed (Flow Shape) -->
       <div id="u6" class="ax_flow_shape">
         <img id="u6_img" class="img " src="images/estadisticapartido/u162.png"/>
@@ -385,21 +426,22 @@
 
       <!-- img_estadio (Image) -->
       <div id="u70" class="ax_image" data-label="img_estadio">
-        <img id="u70_img" class="img " src="images/pagestadios_consultar/img_estadio_u70.png"/>
+        
         <!-- Unnamed () -->
-        <div id="u71" class="text">
-          <p><span></span></p>
-        </div>
       </div>
 
       <!-- lbl_nombreEstadio (Shape) -->
       <div id="u72" class="ax_paragraph" data-label="lbl_nombreEstadio">
         <img id="u72_img" class="img " src="resources/images/transparent.gif"/>
+        
         <!-- Unnamed () -->
         <div id="u73" class="text">
-          <p><span>Santiago Bernabeu</span></p>
         </div>
       </div>
+      
+
+     
+       
 
       <!-- lbl_lugar (Shape) -->
       <div id="u74" class="ax_paragraph" data-label="lbl_lugar">
@@ -424,7 +466,6 @@
         <img id="u78_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u79" class="text">
-          <p><span>España</span></p>
         </div>
       </div>
 
@@ -433,7 +474,6 @@
         <img id="u80_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u81" class="text">
-          <p><span>85000</span></p>
         </div>
       </div>
 
@@ -451,7 +491,6 @@
         <img id="u84_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u85" class="text">
-          <p><span>Natural</span></p>
         </div>
       </div>
 
