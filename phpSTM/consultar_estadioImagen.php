@@ -15,6 +15,6 @@ if (mysqli_connect_errno ()) { // verifica si ha habido un error
                 /* close statement */
 		$stmt->close ();
         };
-        echo '<img id="fotoEstadio" class="img " src="'.$nombre.'" style="max-width: 600px; max-height: 600px" />';
+        echo '<img id="fotoEstadio" class="img " src="'.$nombre.'" style="max-width: 290px; max-height: 290px" />';
 }
 ?>
