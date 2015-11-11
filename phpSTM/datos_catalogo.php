@@ -6,6 +6,32 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
   } else {
       $catalogo = $_POST ['catalogoagregar']; //guarda un una variable local el catalogo seleccionado
       $dato=$_POST['dato_insert'];
+      $ref=$_POST['dato_ref'];
+      
+      
+      //-------------------------------------------------------------------------------------------------
+        if($catalogo=='pais'){
+    
+        $scriptAgregar='call insert_pais(?,?)'; //guarda en una variable local la instruccion a ejecutar
+          if ($stmt = $conn->prepare ( $scriptAgregar )) { //verifica que la sentencia haya sido preparada para su ejecucion
+				$stmt->bind_param ( 'ss', $dato,$ref );  //define los parametros que recibe la funcion
+				$stmt->execute ();                             //ejecuta el query     
+            }
+        }
+      
+       //-------------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------------
+        if($catalogo=='ciudad'){
+    
+        $scriptAgregar='call insert_ciudad(?,?)'; //guarda en una variable local la instruccion a ejecutar
+          if ($stmt = $conn->prepare ( $scriptAgregar )) { //verifica que la sentencia haya sido preparada para su ejecucion
+				$stmt->bind_param ( 'ss', $dato,$ref );  //define los parametros que recibe la funcion
+				$stmt->execute ();                             //ejecuta el query     
+            }
+        }
+      
+       //-------------------------------------------------------------------------------------------------
+      
       if($catalogo=='cesped'){
     
         $scriptAgregar='call Insert_cesped(?)'; //guarda en una variable local la instruccion a ejecutar

@@ -54,33 +54,80 @@
       
         $('#u27_input').change(function(){
 		var id=$('#27_input').val();
-        $('#u97_input').load('datos_catalogo.php?id='+id); // crear datos_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+      //  $('#u97_input').load('get_catalogo.php?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
 
        });  
 
-       
+       //listbox de modificar
        $('#u27_input').change(function(){
           var valor=($('#u27_input').val());
            if(valor=="continente"){
                 $("div#u102").show();
-                $('#u102_input').load('cargar_pais.php');
+           
                 
            }else if(valor!="continente"){
          
                 $("div#u102").hide();
-                $("div#u102").hide();        
+                $("div#u104").hide();        
            }
        });
        
        
-      $('#u102_input').change(function(){           
-                $("div#u10").show(); 
+       
+       
+       
+       
+       //listbox de insertar
+       $('#u19_input').change(function(){
+          var valor=($('#u19_input').val());
+           if(valor=="continente"){
+                $("div#u101").hide();
+            }if(valor=="pais"){
+                $("div#u101").show();
+                $('#u101_input').load('cargar_continente.php');
+            }else if(valor=="ciudad"){
+                $("div#u101").show();
+                $('#u101_input').load('cargar_pais.php');
+                
+               
+          }else if(valor!="continente"){
+         
+                $("div#u101").hide();
+               
+           }
+       });
+       
+   /**   $('#u102_input').change(function(){           
+                $("div#u104").show();
+                var id=$('#u102_input').val();
+                $('#u104_input').load('cargar_ciudadxpais.php?id='+id);
            
        });
 
+        $('#u101_input').change(function(){
+                $("div#u103").show();
+		var id=$('#u101_input').val();
+        $('#u103_input').load('cargar_ciudadxpais.php?id='+id);
+       });  
+        
+       */
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
        
 
        
+
 
        });
         
@@ -113,18 +160,24 @@
       <!-- drp_catalogoA (Droplist) -->
       <div id="u19" class="ax_droplist" data-label="drp_catalogoA">
         <select id="u19_input" name="catalogoagregar">
+            <option value="none">Seleccione un Catalogo</option>
             <option value="continente">continente</option>
             <option value="tipo_accion">tipo de accion</option>
             <option value="tipo_evento">tipo de evento</option>
             <option value="tipo_equipo">tipo de equipo</option>
             <option value="cesped">cesped</option>
-            
-       
+            <option value="pais">pais</option>
+            <option value="ciudad">ciudad</option>
             <option value="formato_evento">formato de evento</option>
             <option value="torneo">Torneo</option>          
         </select>
       </div>
+            <!-- drp_catalogoB (Droplist) -->
+      <div id="u101" class="ax_droplist" data-label="drp_catalogoB">
+        <select id="u101_input" name='dato_ref'>
 
+        </select>
+      </div>
       <!-- lbl_dato (Shape) -->
       <div id="u20" class="ax_paragraph" data-label="lbl_dato">
         <img id="u20_img" class="img " src="resources/images/transparent.gif"/>
@@ -161,14 +214,14 @@
       <!-- drp_modificarCatalogo (Droplist) -->
       <div id="u27" class="ax_droplist" data-label="drp_modificarCatalogo">
         <select id="u27_input" name="catalogomod">
+            <option value="none">Seleccione un Catalogo</option>
             <option value="continente">continente</option>
             <option value="tipo_accion">tipo de accion</option>
             <option value="tipo_evento">tipo de evento</option>
             <option value="tipo_equipo">tipo de equipo</option>
             <option value="cesped">cesped</option>
-            
-
-           
+            <option value="pais">pais</option>
+            <option value="ciudad">ciudad</option>
             <option value="formato_evento">formato de evento</option>
             <option value="torneo">Torneo</option>     
         </select>
@@ -502,6 +555,7 @@
       <!-- drp_modificarDato (Droplist) -->
       <div id="u97" class="ax_droplist" data-label="drp_modificarDato">
         <select id="u97_input">
+            <option value="tipo_equipo">aqui</option>
         </select>
       </div>
 
@@ -521,34 +575,24 @@
       
       
       <!-------------------------------------------------------------new listbox-------------------------->
-      <!-- drp_catalogoB (Droplist) -->
-      <div id="u101" class="ax_droplist" data-label="drp_catalogoB">
-        <select id="u101_input">
-        <option value="-1" id="a">Seleccione un país</option>
-        <option value="-2" id="a">Seleccione un aaapaís</option>
 
-        </select>
-      </div>
 
       <!-- drp_modificarCatalogoB (Droplist) -->
       <div id="u102" class="ax_droplist" data-label="drp_modificarCatalogoB">
         <select id="u102_input">
-            <option value="-1" id="a">Seleccione un país</option>
-            <option value="-2" id="a">Seleccione un pppppaís</option>
+            
+            <?php include('cargar_pais.php');
+          	?>
+       
         </select>
       </div>
 
-      <!-- drp_catalogoC (Droplist) -->
-      <div id="u103" class="ax_droplist" data-label="drp_catalogoC" >
-        <select id="u103_input">
-         <option value="3" id="a">apple3</option>   
-        </select>
-      </div>
+
 
       <!-- drp_modificarCatalogoC (Droplist) -->
       <div id="u104" class="ax_droplist" data-label="drp_modificarCatalogoC" >
         <select id="u104_input">
-             <option value="4" id="a">11apple3</option>  
+             <option value="-2" id="a">11apple3</option>  
         </select>
       </div>
       
