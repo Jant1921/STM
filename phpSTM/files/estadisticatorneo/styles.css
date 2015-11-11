@@ -1,4 +1,4 @@
-﻿body {
+body {
   margin:0px;
   background-color:rgba(242, 242, 242, 1);
   background-image:none;
@@ -1947,7 +1947,7 @@
   width:380px;
   word-wrap:break-word;
 }
-#u154 {
+#btnGrupos {
   position:absolute;
   left:350px;
   top:690px;
@@ -1987,7 +1987,7 @@
   background-image: linear-gradient(to bottom, #113247, #3cb0fd);
   text-decoration: none;
 }
-#u156 {
+#btnFinal {
   position:absolute;
   left:584px;
   top:690px;
@@ -2001,7 +2001,7 @@
   width:166px;
   height:30px;
 }
-#u157 {
+#btnFinalbtn {
   background: #26a8ff;
   background-image: -webkit-linear-gradient(top, #26a8ff, #061721);
   background-image: -moz-linear-gradient(top, #26a8ff, #061721);
@@ -2018,7 +2018,7 @@
   text-decoration: none;
 }
 
-#u157:hover {
+#btnFinalbtn:hover {
   background: #113247;
   background-image: -webkit-linear-gradient(top, #113247, #3cb0fd);
   background-image: -moz-linear-gradient(top, #113247, #3cb0fd);
