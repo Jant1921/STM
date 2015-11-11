@@ -45,6 +45,47 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript">
+           //coge una variable dada(por su número empezando desde 0 o su nombre)             
+function cogerVariable(variable){ 
+             
+    var tipo = typeof variable; 
+    var direccion = location.href; 
+                 
+    if (tipo == "string"){ 
+        var posicion = direccion.indexOf("?"); 
+        posicion = direccion.indexOf(variable,posicion) + variable.length; 
+    } 
+    else if (tipo == "number"){ 
+        var posicion=0; 
+        for (var contador = 0 ; contador < variable + 1 ; contador++){ 
+            posicion = direccion.indexOf("=",++posicion); 
+            if (posicion == -1)posicion=999; 
+        } 
+    } 
+    if (direccion.charAt(posicion) == "="){ 
+        var final = direccion.indexOf("&",posicion); 
+        if (final == -1){final=direccion.length;}; 
+        return direccion.substring(posicion + 1,final); 
+    } 
+} 
+
+var idevento=cogerVariable(0);
+           
+        $(document).ready(function(){
+            //cargar los jugadores en listbox
+            $('#u44_input').change(function(){
+                     var ide=$('#u44_input').val();
+                     
+             $('#u45').load('cargar_tabla_grupos.php?ide='+ide+'&idev='+idevento);
+
+                });                     
+
+    });    
+
+        
+</script>
   </head>
   <body>
     <div id="base" class="">
@@ -272,36 +313,7 @@
 
       <!-- tbl_tablaGrupo (Table) -->
       <div id="u45" class="ax_table" data-label="tbl_tablaGrupo">
-            <table style="width: 100%"  BORDER=1 RULES=ALL	FRAME=VOID>
-			<tr bgcolor="#BBBBBB" >
-                            <td>Nombre del Equipo</td>
-                            <td></td>
-                            <td>PJ</td>
-                            <td></td>
-                            <td>PG</td>
-                            <td></td>
-                            <td>PE</td>
-                            <td></td>
-                            <td>PP</td>
-                            <td></td>
-                            <td>GF</td>
-                            <td></td>
-                            <td>GC</td>
-                            <td></td>
-                            <td>DG</td>
-                            <td></td>
-                            <td>PFP</td>
-                            <td></td>
-                            <td>Pts</td>
-                        </tr>
-			<tr><td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+            
                         <?php include('cargar_tabla_grupos.php');
           	?>
 			

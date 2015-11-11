@@ -1,15 +1,54 @@
 
 <?php
-//Creado por Jose Ruiz; 9-11-2015
+//Creado por Daniel Estrada; 11-11-2015
 $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexion con la base de datos
  if (mysqli_connect_errno ()) { //verifica si ha habido un error
    $error = mysqli_connect_error (); //guarda el mensaje de error para mostrarlo en la pagina
   } else {
-      $yolo=1;
+      if(isset($_GET['ide'])){
+      $idgroup=$_GET['ide'];
+      }else{
+          $idgroup='-1';
+      };
+      if(isset($_GET['idev'])){
+      $idevento=$_GET['idev'];
+      }else{
+          $idevento='-1';
+      };;
       //guarda un una variable local el catalogo seleccionado
-      $consult= " (SELECT Partido_Local FROM partido WHERE Partido_Grupo=1)
+      echo'<table style="width: 100%"  BORDER=1 RULES=ALL	FRAME=VOID>
+			<tr bgcolor="#BBBBBB" >
+                            <td>Nombre del Equipo</td>
+                            <td></td>
+                            <td>PJ</td>
+                            <td></td>
+                            <td>PG</td>
+                            <td></td>
+                            <td>PE</td>
+                            <td></td>
+                            <td>PP</td>
+                            <td></td>
+                            <td>GF</td>
+                            <td></td>
+                            <td>GC</td>
+                            <td></td>
+                            <td>DG</td>
+                            <td></td>
+                            <td>PFP</td>
+                            <td></td>
+                            <td>Pts</td>
+                        </tr>
+			<tr><td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr> ';
+      $consult= " (SELECT Partido_Local FROM partido WHERE Partido_Evento=".$idevento." and Partido_Grupo=".$idgroup.")
 UNION
-(SELECT Partido_Visitante FROM partido WHERE Partido_Grupo=".$yolo.")";
+(SELECT Partido_Visitante FROM partido WHERE Partido_Evento=".$idevento." and Partido_Grupo=".$idgroup.")";
       
       $resultad= mysqli_query($conn,$consult);
       while ($fil= mysqli_fetch_array($resultad)) {
@@ -86,6 +125,8 @@ UNION
           		$stmt->close ();/* close statement */
           	};
                 $golescontra=$golcvisita+$golclocal;
+                $difgoles=$golesfavor-$golescontra;
+                $puntos=($ganes*3)+($empates*1);
         
         
         
@@ -108,11 +149,11 @@ UNION
                             <td></td>
                             <td>'.$golescontra.'</td>
                             <td></td>
-                            <td>DG</td>
+                            <td>'.$difgoles.'</td>
                             <td></td>
                             <td>PFP</td>
                             <td></td>
-                            <td>Pts</td>
+                            <td>'.$puntos.'</td>
                         </tr>
                         
 

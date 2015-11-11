@@ -10,7 +10,7 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
       
       $resultad= mysqli_query($conn,$consulta);
       
-      echo '<option value="-1">Seleccione un grupo </option>'; // colocacion de los datos consultados en el droplist
+      echo '<option value=100000>Seleccione un grupo </option>'; // colocacion de los datos consultados en el droplist
 
       while ($fila = mysqli_fetch_array($resultad)) {
            if($fila['Grupo_Nombre'] != 'Fase Final'){
