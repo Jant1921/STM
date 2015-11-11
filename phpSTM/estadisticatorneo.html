@@ -121,13 +121,16 @@ function nombreVariable(variable){
  
    
 } 
- alert(cogerVariable(0));
+ //alert(cogerVariable(0));
  
  $(document).ready(function(){
           
-      var id=cogerVariable(0)
+      var id=cogerVariable(0);
         $('#u61').append(id);
-        $('#u97_input').load('get_catalogo.php?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+        //alert();
+        $('#u97_input').load('cargar_estadisticaNombreTorneo?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+        
+       
 }); 
 
 //--> 
@@ -850,22 +853,22 @@ function nombreVariable(variable){
       </div>
 
       <!-- btn_faseGrupos (Shape) -->
-      <div id="u154" class="ax_shape" data-label="btn_faseGrupos">
+      <div id="btnGrupos" class="ax_shape" data-label="btn_faseGrupos">
           <?php
            echo '<form method="post" action="fase_grupos.html?evento='.$_GET['evento'].'">
-        <input type="submit" id="u155" name="boton_Verfasegrupos" value="Ver Fase de Grupos">';
-   
+        <input type="submit" id="u155" name="boton_Verfasegrupos" value="Ver Fase de Grupos">
+   			</form>';
           ?>
           
       </div>
       
 
       <!-- btn_faseEliminatoria (Shape) -->
-      <div id="u156" class="ax_shape" data-label="btn_faseEliminatoria">
-                   <?php
-           echo '<form method="post" action="pagpartido_nuevo.html?evento='.$_GET['evento'].'">
-            <input type="submit" id="u157" name="boton_Verfaseeliminatoria" value="Ver Fase Eliminatoria">';
-   
+      <div id="btnFinal"  data-label="btn_faseEliminatoria">
+            <?php
+           echo '<form method="post" action="fase_eliminatoria.html?evento='.$_GET['evento'].'">
+            <input type="submit" id="btnFinalbtn" name="boton_Verfaseeliminatoria" value="Ver Fase Eliminatoria">
+			</form>';   
           ?>
         
       </div>
@@ -873,8 +876,12 @@ function nombreVariable(variable){
       <!-- btn_agregarPartido (Shape) -->
       <!-- btn_agregarPartido (Shape) -->
       <div id="u158" class="ax_shape" data-label="btn_agregarPartido">
-        <input type="submit" id="u159" name='boton_Agregarpartido' value="Agregar Partido" >
-      </div>
+        <?php
+           echo '<form method="post" action="pagpartido_nuevo.html?evento='.$_GET['evento'].'">
+            <input type="submit" id="u159" name="boton_Agregarpartido" value="Agregar Partido" >
+			</form>';
+          ?>
+        </div>
 
       <!-- master_user (Barra General) -->
 
