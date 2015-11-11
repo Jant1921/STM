@@ -125,9 +125,12 @@ function nombreVariable(variable){
  
  $(document).ready(function(){
           
-      var id=cogerVariable(0)
+      var id=cogerVariable(0);
         $('#u61').append(id);
-        $('#u97_input').load('get_catalogo.php?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+        //alert();
+        $('#u97_input').load('cargar_estadisticaNombreTorneo?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+        
+       
 }); 
 
 //--> 
