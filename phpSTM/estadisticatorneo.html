@@ -125,12 +125,23 @@ function nombreVariable(variable){
  
  $(document).ready(function(){
           
-      var id=cogerVariable(0);
-        $('#u61').append(id);
-        //alert();
-        $('#u97_input').load('cargar_estadisticaNombreTorneo?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+        var id=cogerVariable(0);
+        //$('#u61').append(id);
+        //alert(id);
+        $('#u61').load('cargar_estadisticaNombreTorneo.php?id='+id); //  carga el nombre del torneo
+      
+        $('#u11').load('cargar_estadisticasCantEquiposTorneo.php?id='+id); //  carga la cantidad de equipos del torneo
         
-       
+        //$('#u5').load('cargar_estadisticasCantEquiposTorneo.php?id='+id); //  carga la cantidad de partidos jugados
+        
+        //$('#u7').load('cargar_estadisticasCantEquiposTorneo.php?id='+id); //  carga la cantidad de partidos restantes
+        
+        //$('#u29').load('cargar_estadisticasCantEquiposTorneo.php?id='+id); //  carga la cantidad de goles por partido
+        
+        //$('#u57_input').load('cargar_estadisticasCantEquiposTorneo.php?id='+id); //  maximos anotadores
+        
+        
+              
 }); 
 
 //--> 
@@ -190,8 +201,7 @@ function nombreVariable(variable){
       <div id="u10" class="ax_paragraph" data-label="Lbl_CantEquip">
         <img id="u10_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
-        <div id="u11" class="text">
-          <p><span>5</span><span>2</span></p>
+        <div id="u11" class="text">      
         </div>
       </div>
 
@@ -416,7 +426,7 @@ function nombreVariable(variable){
         <img id="u60_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u61" class="text">
-          <p><span></span></p>
+          
         </div>
       </div>
 
