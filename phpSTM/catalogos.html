@@ -50,31 +50,31 @@
        <script type="text/javascript">
            
         $(document).ready(function(){
-
+          
+      
         $('#u27_input').change(function(){
 		var id=$('#27_input').val();
         $('#u97_input').load('datos_catalogo.php?id='+id); // crear datos_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
 
        });  
-       
-    
 
        
-       
        $('#u27_input').change(function(){
-          alert($('#u27_input').val());
-           if($('#u27_input').val()=="continente"){
-                u102.style.display= 'block';
+          var valor=($('#u27_input').val());
+           if(valor=="continente"){
+                $("div#u102").show();
+                $('#u102_input').load('cargar_pais.php');
                 
-           }else{
-                u102.style.display= 'none';
-                u104.style.display= 'none';        
+           }else if(valor!="continente"){
+         
+                $("div#u102").hide();
+                $("div#u102").hide();        
            }
        });
        
        
       $('#u102_input').change(function(){           
-                u104.style.display= 'block'; 
+                $("div#u10").show(); 
            
        });
 
@@ -113,11 +113,12 @@
       <!-- drp_catalogoA (Droplist) -->
       <div id="u19" class="ax_droplist" data-label="drp_catalogoA">
         <select id="u19_input" name="catalogoagregar">
+            <option value="continente">continente</option>
             <option value="tipo_accion">tipo de accion</option>
             <option value="tipo_evento">tipo de evento</option>
             <option value="tipo_equipo">tipo de equipo</option>
             <option value="cesped">cesped</option>
-            <option value="continente">continente</option>
+            
        
             <option value="formato_evento">formato de evento</option>
             <option value="torneo">Torneo</option>          
@@ -160,11 +161,12 @@
       <!-- drp_modificarCatalogo (Droplist) -->
       <div id="u27" class="ax_droplist" data-label="drp_modificarCatalogo">
         <select id="u27_input" name="catalogomod">
+            <option value="continente">continente</option>
             <option value="tipo_accion">tipo de accion</option>
             <option value="tipo_evento">tipo de evento</option>
             <option value="tipo_equipo">tipo de equipo</option>
             <option value="cesped">cesped</option>
-            <option value="continente">continente</option>
+            
 
            
             <option value="formato_evento">formato de evento</option>
@@ -520,7 +522,7 @@
       
       <!-------------------------------------------------------------new listbox-------------------------->
       <!-- drp_catalogoB (Droplist) -->
-      <div id="u101" class="ax_droplist" data-label="drp_catalogoB" style="display:none">
+      <div id="u101" class="ax_droplist" data-label="drp_catalogoB">
         <select id="u101_input">
         <option value="-1" id="a">Seleccione un país</option>
         <option value="-2" id="a">Seleccione un aaapaís</option>
@@ -529,7 +531,7 @@
       </div>
 
       <!-- drp_modificarCatalogoB (Droplist) -->
-      <div id="u102" class="ax_droplist" data-label="drp_modificarCatalogoB" style="display:none">
+      <div id="u102" class="ax_droplist" data-label="drp_modificarCatalogoB">
         <select id="u102_input">
             <option value="-1" id="a">Seleccione un país</option>
             <option value="-2" id="a">Seleccione un pppppaís</option>
@@ -537,14 +539,14 @@
       </div>
 
       <!-- drp_catalogoC (Droplist) -->
-      <div id="u103" class="ax_droplist" data-label="drp_catalogoC" style="display:none">
+      <div id="u103" class="ax_droplist" data-label="drp_catalogoC" >
         <select id="u103_input">
          <option value="3" id="a">apple3</option>   
         </select>
       </div>
 
       <!-- drp_modificarCatalogoC (Droplist) -->
-      <div id="u104" class="ax_droplist" data-label="drp_modificarCatalogoC" style="display:none">
+      <div id="u104" class="ax_droplist" data-label="drp_modificarCatalogoC" >
         <select id="u104_input">
              <option value="4" id="a">11apple3</option>  
         </select>

@@ -6,14 +6,14 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
   } else {
       
       //guarda un una variable local el catalogo seleccionado
-      $consulta= "SELECT evento_Id,Evento_Cantidad_Equipos,Evento_Nombre,Evento_sede,evento_Genero from evento;" ;
+      $consulta= "SELECT evento_Id,Evento_Cantidad_Equipos,Evento_Nombre,Evento_Sede,evento_Genero from evento;" ;
       
       $resultad= mysqli_query($conn,$consulta);
       while ($fila = mysqli_fetch_array($resultad)) {
         $cantidad=$fila['Evento_Cantidad_Equipos'];
         $idEvento=$fila['evento_Id'];
         $eventoNombre=$fila['Evento_Nombre'];
-      	$eventoSede=$fila['Evento_sede'];
+      	$eventoSede=$fila['Evento_Sede'];
       	$generoEvento=$fila['evento_Genero'];
       	
       	//Se carga la cantidad de equipos
@@ -36,9 +36,9 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
       		$stmt->close ();/* close statement */
       	};
       	//Se carga la sede del evento
-      	$consulta = "select select_nacionalidad(?)";
+      	$consulta = "select select_nacion(?)";
       	if ($stmt = $conn->prepare ($consulta)) {
-      		$stmt->bind_param ('s',$eventoSede);  //define los parametros que recibe la funcion
+      		$stmt->bind_param ('i',$eventoSede);  //define los parametros que recibe la funcion
       		$stmt->execute ();
       		$stmt->bind_result ($eventoSede);	/* bind variables to prepared statement */
       		$stmt->fetch ();
