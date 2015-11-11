@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿                <?php 
+                $idEvento = $_GET['evento'];
+                ?>
+<!DOCTYPE html>
 <html>
   <head>
     <title>EstadisticaTorneo</title>
@@ -124,8 +127,8 @@ function nombreVariable(variable){
           
       var id=cogerVariable(0)
         $('#u61').append(id);
-      //  $('#u97_input').load('get_catalogo.php?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
-       }); 
+        $('#u97_input').load('get_catalogo.php?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+}); 
 
 //--> 
 </script>
@@ -140,9 +143,6 @@ function nombreVariable(variable){
         <!-- Unnamed () -->
         <div id="u1" class="text">
           <p><span>Partidos Jugados 
-                  <?php
-    echo $_GET['evento'];
-    ?>
           </span><span>:</span></p>
         </div>
       </div>
@@ -851,13 +851,22 @@ function nombreVariable(variable){
 
       <!-- btn_faseGrupos (Shape) -->
       <div id="u154" class="ax_shape" data-label="btn_faseGrupos">
-          <input type="submit" id="u155" name='boton_Verfasegrupos' value="Ver Fase de Grupos" >
-  
+          <?php
+           echo '<form method="post" action="fase_grupos.html?evento='.$_GET['evento'].'">
+        <input type="submit" id="u155" name="boton_Verfasegrupos" value="Ver Fase de Grupos">';
+   
+          ?>
+          
       </div>
+      
 
       <!-- btn_faseEliminatoria (Shape) -->
       <div id="u156" class="ax_shape" data-label="btn_faseEliminatoria">
-          <input type="submit" id="u157" name='boton_Verfaseeliminatoria' value="Ver Fase Eliminatoria" >
+                   <?php
+           echo '<form method="post" action="pagpartido_nuevo.html?evento='.$_GET['evento'].'">
+            <input type="submit" id="u157" name='boton_Verfaseeliminatoria' value="Ver Fase Eliminatoria">';
+   
+          ?>
         
       </div>
 
