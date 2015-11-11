@@ -45,6 +45,91 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript">
+
+
+//coge una variable dada(por su número empezando desde 0 o su nombre)             
+function cogerVariable(variable){ 
+             
+    var tipo = typeof variable; 
+    var direccion = location.href; 
+                 
+    if (tipo == "string"){ 
+        var posicion = direccion.indexOf("?"); 
+        posicion = direccion.indexOf(variable,posicion) + variable.length; 
+    } 
+    else if (tipo == "number"){ 
+        var posicion=0; 
+        for (var contador = 0 ; contador < variable + 1 ; contador++){ 
+            posicion = direccion.indexOf("=",++posicion); 
+            if (posicion == -1)posicion=999; 
+        } 
+    } 
+    if (direccion.charAt(posicion) == "="){ 
+        var final = direccion.indexOf("&",posicion); 
+        if (final == -1){final=direccion.length;}; 
+        return direccion.substring(posicion + 1,final); 
+    } 
+} 
+
+//Da la cantidad de elementos empezando desde 0 
+function contarVariables(){ 
+                 
+    var direccion = self.location.href; 
+    var posicion = direccion.indexOf("?"); 
+                 
+    for (var contador = -1 ; posicion != -1 ; ++contador){ 
+        posicion = direccion.indexOf("=",++posicion); 
+    } 
+                 
+    if (contador < 0)contador=0; 
+                 
+    return contador; 
+} 
+
+//da el nombre de una variable 
+function nombreVariable(variable){ 
+
+    var tipo = typeof variable; 
+    var direccion = location.href; 
+                 
+    if (tipo == "string"){ 
+        var posicion = direccion.indexOf("?"); 
+        if ((posicion > 0) && (direccion.indexOf(variable,posicion) > -1)) 
+            posicion = direccion.indexOf(variable,posicion); 
+        else 
+            posicion = 0; 
+    } 
+    else if (tipo == "number"){ 
+        var posicion = 0; 
+        posicion = direccion.indexOf("?"); 
+        for (var contador = 0 ; ((contador < variable) && (posicion != -1)) ; contador++){ 
+            posicion = direccion.indexOf("&", ++posicion); 
+        } 
+        posicion++; 
+    } 
+    if (posicion > 0){ 
+        var final = direccion.indexOf("=",posicion); 
+        //alert(posicion + " , " + final); 
+        if (final == -1){final=direccion.length;}; 
+        return direccion.substring(posicion,final); 
+    } 
+ 
+   
+} 
+ alert(cogerVariable(0));
+ 
+ $(document).ready(function(){
+          
+      var id=cogerVariable(0)
+        $('#u61').append(id);
+      //  $('#u97_input').load('get_catalogo.php?id='+id); //  get_catalogo.php como consulta del contenido de la tabla catalogo seleccionada
+       }); 
+
+//--> 
+</script>
+
   </head>
   <body>
     <div id="base" class="">
@@ -54,7 +139,11 @@
         <img id="u0_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u1" class="text">
-          <p><span>Partidos Jugados</span><span>:</span></p>
+          <p><span>Partidos Jugados 
+                  <?php
+    echo $_GET['evento'];
+    ?>
+          </span><span>:</span></p>
         </div>
       </div>
 
@@ -324,7 +413,7 @@
         <img id="u60_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u61" class="text">
-          <p><span>Nombre del Torneo</span></p>
+          <p><span></span></p>
         </div>
       </div>
 
