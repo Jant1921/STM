@@ -1,4 +1,4 @@
-﻿body {
+body {
   margin:0px;
   background-image:none;
   position:static;
@@ -3343,7 +3343,7 @@
 #u263 {
   position:absolute;
   left:232px;
-  top:1307px;
+  top:1057px;
   width:132px;
   height:30px;
 }
@@ -3364,7 +3364,7 @@
 #u265 {
   position:absolute;
   left:750px;
-  top:1307px;
+  top:1057px;
   width:132px;
   height:30px;
 }
@@ -3637,4 +3637,27 @@
   top:10px;
   width:188px;
   word-wrap:break-word;
+}
+
+#capitanL {
+  position:absolute;
+  width:272px;
+  height:22px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  text-decoration:none;
+  color:#000000;
+}
+#capitanV {
+  position:absolute;
+  width:272px;
+  height:22px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  text-decoration:none;
+  color:#000000;
 }
