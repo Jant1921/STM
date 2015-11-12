@@ -42,7 +42,7 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
                             <td></td>
                             <td></td>
                         </tr> ';
-      $consult= "select partido_Local,partido_Visitante,Partido_Marcador_Local,Partido_Marcador_Visitante,partido_Disputado From partido where Partido_Evento=".$idevento." and Partido_Grupo=".$idgroup." ";;
+      $consult= "select partido_id,partido_Local,partido_Visitante,Partido_Marcador_Local,Partido_Marcador_Visitante,partido_Disputado From partido where Partido_Evento=".$idevento." and Partido_Grupo=".$idgroup." ";;
       
       $resultad= mysqli_query($conn,$consult);
       while ($fil= mysqli_fetch_array($resultad)) {
@@ -51,7 +51,7 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
           $marcadorlocal=$fil['Partido_Marcador_Local'];
           $marcadorvisitante=$fil['Partido_Marcador_Visitante'];
           $disputado=$fil['partido_Disputado'];
-          
+          $id_partido=$fil['partido_id'];
                 
                 //$consulta = "select partido_Local,partido_Visitante,Partido_Marcador_Local,Partido_Marcador_Visitante From partido where Partido_Evento=".$idevento." and Partido_Grupo=".$idgroup."";
          	$consulta = "select nombre_equipo(?)";
@@ -88,7 +88,7 @@ $conn = new mysqli ( "127.0.0.1:3306", "base1", "base", "stm"); //crea la conexi
                             <td></td>
                             <td>_______</td>
                             <td></td>
-                            <td>'.$marcadorlocal.'--'.$marcadorvisitante.'</td>
+                            <td><a href="estadisticapartido.html?partido='.$id_partido.'">'.$marcadorlocal.'--'.$marcadorvisitante.'</a></td>
                             <td></td>
                             <td>_______</td>
                             <td></td>
