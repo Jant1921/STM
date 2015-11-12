@@ -72,6 +72,9 @@ function cogerVariable(variable){
 } 
 
 var idpartido=cogerVariable(0);
+var pl=cogerVariable(1);
+var pv=cogerVariable(2);
+    
            
         $(document).ready(function(){
             //cargar los jugadores en listbox
@@ -89,11 +92,19 @@ var idpartido=cogerVariable(0);
 </script>
 
 <script type="text/javascript">
-window.onload = function () {
+var idpartido=cogerVariable(0);
+var pl=cogerVariable(1);
+var nl=cogerVariable(2);
+var nv=cogerVariable(3);
+var pv=cogerVariable(4);
+        alert(nl);
+        alert(pv);
+           
+    window.onload = function () {
 	var chart = new CanvasJS.Chart("chartContainer",
 	{
 		title:{
-			text: "Presidential Election Results"
+			text: "Posesion del balon"
 		},     
                 animationEnabled: true,     
 		data: [
@@ -103,9 +114,9 @@ window.onload = function () {
 			toolTipContent: "{legendText}: {y} - <strong>#percent% </strong>", 					
 			showInLegend: true,
 			dataPoints: [
-				{y: 65899660, indexLabel: "Barack Obama #percent%", legendText: "Barack Obama" },
-				{y: 60929152, indexLabel: "Mitt Romney #percent%", legendText: "Mitt Romney" },
-				{y: 2175850,  indexLabel: "Others #percent%", legendText: "Others" }			
+				{y: pl, indexLabel: nl+"#percent%", legendText: nl },
+				{y: pv, indexLabel: nv+"#percent%", legendText: nv },
+						
 			]
 		}
 		]
