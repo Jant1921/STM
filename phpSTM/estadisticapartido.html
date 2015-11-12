@@ -87,6 +87,34 @@ var idpartido=cogerVariable(0);
 
         
 </script>
+
+<script type="text/javascript">
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer",
+	{
+		title:{
+			text: "Presidential Election Results"
+		},     
+                animationEnabled: true,     
+		data: [
+		{        
+			type: "doughnut",
+			startAngle: 60,                          
+			toolTipContent: "{legendText}: {y} - <strong>#percent% </strong>", 					
+			showInLegend: true,
+			dataPoints: [
+				{y: 65899660, indexLabel: "Barack Obama #percent%", legendText: "Barack Obama" },
+				{y: 60929152, indexLabel: "Mitt Romney #percent%", legendText: "Mitt Romney" },
+				{y: 2175850,  indexLabel: "Others #percent%", legendText: "Others" }			
+			]
+		}
+		]
+	});
+	chart.render();
+	}
+
+</script>
+<script type="text/javascript" src="files/canvasjs.min.js"></script>
   </head>
   <body>
     <div id="base" class="">
@@ -343,14 +371,8 @@ var idpartido=cogerVariable(0);
 
       <!-- posesion grafica (Shape) -->
       <div id="u151" class="ax_paragraph" data-label="posesion grafica">
-        <img id="u151_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u152" class="text">
-            
-            
-          <p><span>Inserte Grafica Posesion aqui</span></p>
-        </div>
-      </div>
+        <div id="chartContainer" style="height: 300px; width: 400px;"></div>
+       </div>
 
       <!-- Lbl_Capitan1 (Shape) -->
       <div id="u153" class="ax_paragraph" data-label="Lbl_Capitan1">
