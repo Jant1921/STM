@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+                $idEvento = $_GET['evento'];
+//cargar_nombres_partidos.php
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <title>pagpartido_nuevo</title>
@@ -45,6 +49,65 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript">
+           
+      //Fragmento de codigo tomado de http://www.mcanam.com/articulos/JavaScript.php?id=8
+       function cogerVariable(variable){ 
+           
+    	    var tipo = typeof variable; 
+    	    var direccion = location.href; 
+    	                 
+    	    if (tipo == "string"){ 
+    	        var posicion = direccion.indexOf("?"); 
+    	        posicion = direccion.indexOf(variable,posicion) + variable.length; 
+    	    } 
+    	    else if (tipo == "number"){ 
+    	        var posicion=0; 
+    	        for (var contador = 0 ; contador < variable + 1 ; contador++){ 
+    	            posicion = direccion.indexOf("=",++posicion); 
+    	            if (posicion == -1)posicion=999; 
+    	        } 
+    	    } 
+    	    if (direccion.charAt(posicion) == "="){ 
+    	        var final = direccion.indexOf("&",posicion); 
+    	        if (final == -1){final=direccion.length;}; 
+    	        return direccion.substring(posicion + 1,final); 
+    	    } 
+    	}
+        
+       $(document).ready(function(){
+
+        	$('#u99_input').change(function(){
+                var idz=$('#u99_input').val();
+                var idc=cogerVariable(0);
+
+        $('#u73_input').load('cargar_nombres_partidos.php?evento='+idc+'&grupo='+idz);
+         
+        });  
+        	$('#u73_input').change(function(){
+                var id=$('#u73_input').val();
+        $('#team_local').load('titularesLocal.php?id='+id);
+           })
+           
+           $('#u73_input').change(function(){
+                var id=$('#u73_input').val();
+        $('#team_visita').load('titularesVisita.php?id='+id);
+           })
+           
+        $('#u73_input').change(function(){
+                var id=$('#u73_input').val();
+        $('#capitanL').load('selectCapiLocal.php?id='+id);
+           })  
+           
+           $('#u73_input').change(function(){
+               var id=$('#u73_input').val();
+       $('#capitanV').load('selectCapiVisita.php?id='+id);
+          })    
+
+       });
+</script>
+
   </head>
   <body>
     <div id="base" class="">
@@ -395,41 +458,97 @@
           <p><span>Visitante</span></p>
         </div>
       </div>
-
-      <!-- drp_ELocal (Droplist) -->
-      <div id="u73" class="ax_droplist" data-label="drp_ELocal">
-        <select id="u73_input">
-        </select>
-      </div>
-
-      <!-- lbl_estadiopartido (Shape) -->
-      <div id="u74" class="ax_paragraph" data-label="lbl_estadiopartido">
+	  <div id="u74" class="ax_paragraph" data-label="lbl_estadiopartido">
         <img id="u74_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u75" class="text">
           <p><span>Seleccione </span><span>el estadio en el que se disputara el partido:</span></p>
         </div>
       </div>
-
-      <!-- drp_NEstadio (Droplist) -->
-      <div id="u76" class="ax_droplist" data-label="drp_NEstadio">
-        <select id="u76_input">
+      
+	  <form method="post" action="actualizar_partido.php">
+      <!-- drp_ELocal (Droplist) -->
+      <div id="u73" class="ax_droplist" data-label="drp_ELocal">
+        <select id="u73_input" name="in_partido">
         </select>
       </div>
+      <!-- drp_NEstadio (Droplist) -->
+      <div id="u76" class="ax_droplist" data-label="drp_NEstadio">
+        <select id="u76_input" name="in_estadio">
+        <?php include('cargar_estadios.php');
+          	?>
+        </select>
+      </div>
+      <!-- TF_PosesionL (Text Field) -->
+      <div id="u85" class="ax_text_field" data-label="TF_MarcadorL">
+        <input id="u85_input" type="number" name="in_posesion_local" value=""/>
+      </div>
+      <!-- TF_PosesionV (Text Field) -->
+      <div id="u90" class="ax_text_field" data-label="TF_MarcadorV">
+        <input id="u90_input" type="number" name="in_posesion_visita" value=""/>
+      </div>
+      <!-- TF_MarcadorL (Text Field) -->
+      <div id="u91" class="ax_text_field" data-label="TF_MarcadorL">
+        <input id="u91_input" type="number" name="in_gol_local" value=""/>
+      </div>
+       <!-- TF_MarcadorV (Text Field) -->
+      <div id="u96" class="ax_text_field" data-label="TF_MarcadorV">
+        <input id="u96_input" name="in_gol_visita" type="number"  value=""/>
+      </div>
+      <!-- TF_FechaPartido (Text Field) -->
+      <div id="u82" class="ax_text_field" data-label="TF_FechaPartido">
+        <input id="u82_input" type="date" name="in_fecha" value=""/>
+      </div>
+      <!-- lb_titularesLocal (List Box) -->
+      <div id="u157" class="ax_list_box" data-label="lb_titularesLocal">
+        <style type="text/css">
+			   ul { height: 275px; width: 350px; border: 1px solid #000; }
+			   ul { list-style-type: none; margin: 0; padding: 0; overflow-x: hidden; }
+			   li { margin: 0; padding: 0; }
+			   label { display: block; color: WindowText; background-color: Window; margin: 0; padding: 0; width: 100%; }
+			   label:hover { background-color: Highlight; color: HighlightText; }
+		     </style>
+			<ul id="team_local">
+				<li><p><span>Seleccione un tipo de equipo</span></p></li>
+			</ul>
+      </div>
+      <!-- lb_titularesVisitante (List Box) -->
+      <div id="u160" class="ax_list_box" data-label="lb_titularesVisitante">
+        <ul id="team_visita">
+				<li><p><span>Seleccione un tipo de equipo</span></p></li>
+			</ul>
+      </div>
+      
+      <!-- btn_capitanVisitante (Shape) -->
+      <div id="u265" class="ax_shape" data-label="btn_capitanVisitante">
+        <label><p><span>Nombrar Capitán:</span></p></label>
+        <select id="capitanV" name="capitan_visita">
+        </select>
+      </div>
+     
+      
+	<!-- btn_capitanLocal (Shape) -->
+      <div id="u263" class="ax_shape" data-label="btn_capitanLocal">
+          <p><span>Nombrar Capitán</span></p>
+          <select id="capitanL" name="capitan_local">
+        </select>
+       </div>
+       
+	</form>
+      <!-- lbl_estadiopartido (Shape) -->
+       
+      
+      
 
       <!-- lbl_torneopartido (Shape) -->
       <div id="u77" class="ax_paragraph" data-label="lbl_torneopartido">
-        <img id="u77_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
-        <div id="u78" class="text">
-          <p><span>Seleccione el Torneo al que pertenece el partido:</span></p>
-        </div>
-      </div>
-
-      <!-- drp_NTorneo (Droplist) -->
-      <div id="u79" class="ax_droplist" data-label="drp_NTorneo">
-        <select id="u79_input">
-        </select>
+        <?php echo '<div id="u78" value='.$idEvento.' class="text">
+        	
+          <p><span>Se agregarán datos al evento'.$idEvento.'</span></p>
+          
+        </div>';
+        ?>
       </div>
 
       <!-- lbl_fechapartido (Shape) -->
@@ -441,10 +560,7 @@
         </div>
       </div>
 
-      <!-- TF_FechaPartido (Text Field) -->
-      <div id="u82" class="ax_text_field" data-label="TF_FechaPartido">
-        <input id="u82_input" type="date" value=""/>
-      </div>
+      
 
       <!-- btn_agregarPartido (Shape) -->
       <div id="u83" class="ax_shape" data-label="btn_agregarPartido">
@@ -455,10 +571,7 @@
         </div>
       </div>
 
-      <!-- TF_MarcadorL (Text Field) -->
-      <div id="u85" class="ax_text_field" data-label="TF_MarcadorL">
-        <input id="u85_input" type="number" value=""/>
-      </div>
+      
 
       <!-- lbl_marcadorpartido (Shape) -->
       <div id="u86" class="ax_paragraph" data-label="lbl_marcadorpartido">
@@ -478,10 +591,7 @@
         </div>
       </div>
 
-      <!-- TF_MarcadorV (Text Field) -->
-      <div id="u90" class="ax_text_field" data-label="TF_MarcadorV">
-        <input id="u90_input" type="number" value=""/>
-      </div>
+      
 
       <!-- TF_MarcadorL (Text Field) -->
       <div id="u91" class="ax_text_field" data-label="TF_MarcadorL">
@@ -523,6 +633,8 @@
       <!-- drp_NEstadio (Droplist) -->
       <div id="u99" class="ax_droplist" data-label="drp_NEstadio">
         <select id="u99_input">
+        <?php include('cargar_grupos.php');
+          	?>
         </select>
       </div>
 
@@ -787,12 +899,6 @@
         </div>
       </div>
 
-      <!-- lb_titularesLocal (List Box) -->
-      <div id="u157" class="ax_list_box" data-label="lb_titularesLocal">
-        <select id="u157_input" size="2">
-        </select>
-      </div>
-
       <!-- Unnamed (Shape) -->
       <div id="u158" class="ax_paragraph">
         <img id="u158_img" class="img " src="resources/images/transparent.gif"/>
@@ -802,487 +908,12 @@
         </div>
       </div>
 
-      <!-- lb_titularesVisitante (List Box) -->
-      <div id="u160" class="ax_list_box" data-label="lb_titularesVisitante">
-        <select id="u160_input" size="2">
-        </select>
-      </div>
+      
 
-      <!-- btn_agregarTitularLocal (Shape) -->
-      <div id="u161" class="ax_shape" data-label="btn_agregarTitularLocal">
-        <img id="u161_img" class="img " src="images/catalogos/btn_agregarc_u23.png"/>
-        <!-- Unnamed () -->
-        <div id="u162" class="text">
-          <p><span>Agregar</span></p>
-        </div>
-      </div>
 
-      <!-- btn_agregarTitularVisitante (Shape) -->
-      <div id="u163" class="ax_shape" data-label="btn_agregarTitularVisitante">
-        <img id="u163_img" class="img " src="images/catalogos/btn_agregarc_u23.png"/>
-        <!-- Unnamed () -->
-        <div id="u164" class="text">
-          <p><span>Agregar</span></p>
-        </div>
-      </div>
 
-      <!-- tbl_local (Table) -->
-      <div id="u165" class="ax_table" data-label="tbl_local">
+      
 
-        <!-- Unnamed (Table Cell) -->
-        <div id="u166" class="ax_table_cell">
-          <img id="u166_img" class="img " src="images/pagpartido_nuevo/u166.png"/>
-          <!-- Unnamed () -->
-          <div id="u167" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u168" class="ax_table_cell">
-          <img id="u168_img" class="img " src="images/pagpartido_nuevo/u168.png"/>
-          <!-- Unnamed () -->
-          <div id="u169" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u170" class="ax_table_cell">
-          <img id="u170_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u171" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u172" class="ax_table_cell">
-          <img id="u172_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u173" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u174" class="ax_table_cell">
-          <img id="u174_img" class="img " src="images/pagpartido_nuevo/u174.png"/>
-          <!-- Unnamed () -->
-          <div id="u175" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u176" class="ax_table_cell">
-          <img id="u176_img" class="img " src="images/pagpartido_nuevo/u176.png"/>
-          <!-- Unnamed () -->
-          <div id="u177" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u178" class="ax_table_cell">
-          <img id="u178_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u179" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u180" class="ax_table_cell">
-          <img id="u180_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u181" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u182" class="ax_table_cell">
-          <img id="u182_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u183" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u184" class="ax_table_cell">
-          <img id="u184_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u185" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u186" class="ax_table_cell">
-          <img id="u186_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u187" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u188" class="ax_table_cell">
-          <img id="u188_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u189" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u190" class="ax_table_cell">
-          <img id="u190_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u191" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u192" class="ax_table_cell">
-          <img id="u192_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u193" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u194" class="ax_table_cell">
-          <img id="u194_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u195" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u196" class="ax_table_cell">
-          <img id="u196_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u197" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u198" class="ax_table_cell">
-          <img id="u198_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u199" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u200" class="ax_table_cell">
-          <img id="u200_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u201" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u202" class="ax_table_cell">
-          <img id="u202_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u203" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u204" class="ax_table_cell">
-          <img id="u204_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u205" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u206" class="ax_table_cell">
-          <img id="u206_img" class="img " src="images/pagpartido_nuevo/u206.png"/>
-          <!-- Unnamed () -->
-          <div id="u207" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u208" class="ax_table_cell">
-          <img id="u208_img" class="img " src="images/pagpartido_nuevo/u208.png"/>
-          <!-- Unnamed () -->
-          <div id="u209" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u210" class="ax_paragraph">
-        <img id="u210_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u211" class="text">
-          <p><span># Camisa</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u212" class="ax_paragraph">
-        <img id="u212_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u213" class="text">
-          <p><span>Nombre de Jugador</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Table) -->
-      <div id="u214" class="ax_table">
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u215" class="ax_table_cell">
-          <img id="u215_img" class="img " src="images/pagpartido_nuevo/u166.png"/>
-          <!-- Unnamed () -->
-          <div id="u216" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u217" class="ax_table_cell">
-          <img id="u217_img" class="img " src="images/pagpartido_nuevo/u168.png"/>
-          <!-- Unnamed () -->
-          <div id="u218" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u219" class="ax_table_cell">
-          <img id="u219_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u220" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u221" class="ax_table_cell">
-          <img id="u221_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u222" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u223" class="ax_table_cell">
-          <img id="u223_img" class="img " src="images/pagpartido_nuevo/u174.png"/>
-          <!-- Unnamed () -->
-          <div id="u224" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u225" class="ax_table_cell">
-          <img id="u225_img" class="img " src="images/pagpartido_nuevo/u176.png"/>
-          <!-- Unnamed () -->
-          <div id="u226" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u227" class="ax_table_cell">
-          <img id="u227_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u228" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u229" class="ax_table_cell">
-          <img id="u229_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u230" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- btl_aleacionVisita (Table Cell) -->
-        <div id="u231" class="ax_table_cell" data-label="btl_aleacionVisita">
-          <img id="u231_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u232" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u233" class="ax_table_cell">
-          <img id="u233_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u234" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u235" class="ax_table_cell">
-          <img id="u235_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u236" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u237" class="ax_table_cell">
-          <img id="u237_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u238" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u239" class="ax_table_cell">
-          <img id="u239_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u240" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u241" class="ax_table_cell">
-          <img id="u241_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u242" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u243" class="ax_table_cell">
-          <img id="u243_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u244" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u245" class="ax_table_cell">
-          <img id="u245_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u246" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u247" class="ax_table_cell">
-          <img id="u247_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u248" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u249" class="ax_table_cell">
-          <img id="u249_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u250" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u251" class="ax_table_cell">
-          <img id="u251_img" class="img " src="images/pagpartido_nuevo/u170.png"/>
-          <!-- Unnamed () -->
-          <div id="u252" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u253" class="ax_table_cell">
-          <img id="u253_img" class="img " src="images/pagpartido_nuevo/u172.png"/>
-          <!-- Unnamed () -->
-          <div id="u254" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u255" class="ax_table_cell">
-          <img id="u255_img" class="img " src="images/pagpartido_nuevo/u206.png"/>
-          <!-- Unnamed () -->
-          <div id="u256" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u257" class="ax_table_cell">
-          <img id="u257_img" class="img " src="images/pagpartido_nuevo/u208.png"/>
-          <!-- Unnamed () -->
-          <div id="u258" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u259" class="ax_paragraph">
-        <img id="u259_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u260" class="text">
-          <p><span># Camisa</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u261" class="ax_paragraph">
-        <img id="u261_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u262" class="text">
-          <p><span>Nombre de Jugador</span></p>
-        </div>
-      </div>
-
-      <!-- btn_capitanLocal (Shape) -->
-      <div id="u263" class="ax_shape" data-label="btn_capitanLocal">
-        <img id="u263_img" class="img " src="images/pagpartido_nuevo/btn_capitanlocal_u263.png"/>
-        <!-- Unnamed () -->
-        <div id="u264" class="text">
-          <p><span>Nombrar Capitán</span></p>
-        </div>
-      </div>
-
-      <!-- btn_capitanVisitante (Shape) -->
-      <div id="u265" class="ax_shape" data-label="btn_capitanVisitante">
-        <img id="u265_img" class="img " src="images/pagpartido_nuevo/btn_capitanlocal_u263.png"/>
-        <!-- Unnamed () -->
-        <div id="u266" class="text">
-          <p><span>Nombrar Capitán</span></p>
-        </div>
-      </div>
 
       <!-- btn_eliminarLocal (Shape) -->
       <div id="u267" class="ax_shape" data-label="btn_eliminarLocal">
@@ -1302,81 +933,8 @@
         </div>
       </div>
 
-      <!-- Unnamed (Exito2) -->
+      
 
-      <!-- Panel Fondo (Dynamic Panel) -->
-      <div id="u272" class="ax_dynamic_panel" data-label="Panel Fondo">
-        <div id="u272_state0" class="panel_state" data-label="State1">
-          <div id="u272_state0_content" class="panel_state_content">
-
-            <!-- ventana_exito (Shape) -->
-            <div id="u273" class="ax_shape" data-label="ventana_exito">
-              <img id="u273_img" class="img " src="images/pagequipos_nuevo/ventana_exito_u83.png"/>
-              <!-- Unnamed () -->
-              <div id="u274" class="text">
-                <p><span></span></p>
-              </div>
-            </div>
-
-            <!-- btn_exito (Dynamic Panel) -->
-            <div id="u275" class="ax_dynamic_panel" data-label="btn_exito">
-              <div id="u275_state0" class="panel_state" data-label="State1">
-                <div id="u275_state0_content" class="panel_state_content">
-
-                  <!-- Unnamed (Shape) -->
-                  <div id="u276" class="ax_shape">
-                    <img id="u276_img" class="img " src="images/pagequipos_nuevo/u86.png"/>
-                    <!-- Unnamed () -->
-                    <div id="u277" class="text">
-                      <p><span>Aceptar</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="u275_state1" class="panel_state" data-label="State2">
-                <div id="u275_state1_content" class="panel_state_content">
-
-                  <!-- Unnamed (Shape) -->
-                  <div id="u278" class="ax_shape">
-                    <img id="u278_img" class="img " src="images/pagequipos_nuevo/u88.png"/>
-                    <!-- Unnamed () -->
-                    <div id="u279" class="text">
-                      <p><span>Aceptar</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- lbl_exito (Shape) -->
-            <div id="u280" class="ax_paragraph" data-label="lbl_exito">
-              <img id="u280_img" class="img " src="resources/images/transparent.gif"/>
-              <!-- Unnamed () -->
-              <div id="u281" class="text">
-                <p><span>La operación fué realizada con éxito</span></p>
-              </div>
-            </div>
-
-            <!-- contorno_ventana_exito (Shape) -->
-            <div id="u282" class="ax_shape" data-label="contorno_ventana_exito">
-              <img id="u282_img" class="img " src="images/pagequipos_nuevo/contorno_ventana_exito_u92.png"/>
-              <!-- Unnamed () -->
-              <div id="u283" class="text">
-                <p><span></span></p>
-              </div>
-            </div>
-
-            <!-- lbl_exito (Shape) -->
-            <div id="u284" class="ax_paragraph" data-label="lbl_exito">
-              <img id="u284_img" class="img " src="resources/images/transparent.gif"/>
-              <!-- Unnamed () -->
-              <div id="u285" class="text">
-                <p><span>Operación Exitosa</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </body>
 </html>
