@@ -92,14 +92,11 @@ var pv=cogerVariable(2);
 </script>
 
 <script type="text/javascript">
-var idpartido=cogerVariable(0);
-var pl=cogerVariable(1);
-var nl=cogerVariable(2);
-var nv=cogerVariable(3);
-var pv=cogerVariable(4);
-        alert(nl);
-        alert(pv);
-           
+var idpartido=cogerVariable(0);  //id del partido
+var pl=cogerVariable(1);		//posesion del local
+var nl=cogerVariable(2);		//nombre del local
+var nv=cogerVariable(3);		//nombre del visitante
+var pv=cogerVariable(4);		//posesion del visitante
     window.onload = function () {
 	var chart = new CanvasJS.Chart("chartContainer",
 	{
@@ -111,11 +108,11 @@ var pv=cogerVariable(4);
 		{        
 			type: "doughnut",
 			startAngle: 60,                          
-			toolTipContent: "{legendText}: {y} - <strong>#percent% </strong>", 					
+			toolTipContent: "{legendText}: <strong>{y}% </strong>", 					
 			showInLegend: true,
 			dataPoints: [
-				{y: pl, indexLabel: nl+"#percent%", legendText: nl },
-				{y: pv, indexLabel: nv+"#percent%", legendText: nv },
+				{y: pl, indexLabel: nl+" {y}%", legendText: nl },
+				{y: pv, indexLabel: nv+" {y}%", legendText: nv },
 						
 			]
 		}
